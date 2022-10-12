@@ -1,17 +1,23 @@
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("/fonts/JetBrainsMono-Bold.woff2") format("woff2");
+    font-weight: bold;
+}
+
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  color: white;
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    color: white;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
