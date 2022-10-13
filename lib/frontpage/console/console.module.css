@@ -32,9 +32,12 @@
 
 .button {
     font-size: inherit;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     border-radius: 50%;
-    cursor: pointer;
     transition-property: background-color, width, height;
     transition-duration: 0.2s;
     transition-timing-function: ease-in-out;
