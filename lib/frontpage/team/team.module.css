@@ -1,0 +1,38 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.text {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 30px;
+}
+
+.title,
+.description {
+    background-color: black;
+    padding: 20px;
+    width: fit-content;
+    margin-right: 70px;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 36px;
+    border-bottom: 4px solid #2e42b0;
+}
+
+.description {
+    font-size: 24px;
+}

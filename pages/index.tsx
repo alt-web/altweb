@@ -1,7 +1,8 @@
 import type { NextPage } from "next"
 import Head from "next/head"
 import styles from "../styles/index.module.css"
-import ConsoleScreen from "../lib/console"
+import ConsoleScreen from "../lib/frontpage/console"
+import Team from "../lib/frontpage/team"
 
 const Home: NextPage = () => {
     return (
@@ -10,6 +11,7 @@ const Home: NextPage = () => {
                 <title>Alt | Web</title>
             </Head>
             <ConsoleScreen />
+            <Team />
         </div>
     )
 }

@@ -63,11 +63,16 @@ const SecretButton = ({ isVisible }: { isVisible: boolean }) => {
         }
     }, [isVisible])
 
+    const scroll = () => {
+        window.scroll({ left: 0, top: window.innerHeight, behavior: "smooth" })
+    }
+
     return (
         <div className={styles.buttonContainer}>
             <button
                 style={{ backgroundColor: bgColor, height: size, width: size }}
-                className={styles.button}>
+                className={styles.button}
+                onClick={scroll}>
                 <CaretDownOutlined />
             </button>
         </div>
