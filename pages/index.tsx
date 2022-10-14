@@ -13,7 +13,6 @@ const Home: NextPage = () => {
                 <title>Alt | Web</title>
             </Head>
             <ConsoleScreen />
-            <Team />
             <Features />
             <EmailForm />
         </div>

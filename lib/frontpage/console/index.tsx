@@ -1,11 +1,21 @@
 import { useState, useEffect } from "react"
-import { CaretDownOutlined } from "@ant-design/icons"
-import styles from "./console.module.css"
+import { TriangleDownIcon } from "@chakra-ui/icons"
+import { Box, Flex } from "@chakra-ui/react"
 
 const ConsoleScreen = () => {
     const [stage, setStage] = useState(1)
     return (
-        <div className={styles.container}>
+        <Flex
+            w="100%"
+            h="100vh"
+            bgColor="black"
+            align="center"
+            justify="center"
+            direction="column"
+            color="white"
+            fontFamily="JetBrains Mono"
+            fontSize="24px"
+            fontWeight="bold">
             <Line onAnimationEnd={() => setStage(2)} isVisible={stage >= 1}>
                 Hi!
             </Line>
@@ -15,8 +25,8 @@ const ConsoleScreen = () => {
             <Line onAnimationEnd={() => setStage(4)} isVisible={stage >= 3}>
                 We have something for you
             </Line>
-            <SecretButton isVisible={stage >= 4} />
-        </div>
+            <Triangle isVisible={stage >= 4} />
+        </Flex>
     )
 }
 
@@ -46,31 +56,29 @@ const Line = ({
         }
     }, [isVisible, sliceEnd])
 
-    return <div className={styles.line}>{children.slice(0, sliceEnd)}</div>
+    return (
+        <Box w="100%" maxW="400px" h="54px" p="10px">
+            {children.slice(0, sliceEnd)}
+        </Box>
+    )
 }
 
-const SecretButton = ({ isVisible }: { isVisible: boolean }) => {
-    const [bgColor, setBgColor] = useState("black")
-    const [size, setSize] = useState("50px")
+const Triangle = ({ isVisible }: { isVisible: boolean }) => {
+    const [color, setColor] = useState("black")
 
     useEffect(() => {
         if (isVisible) {
             const timeout = setTimeout(() => {
-                setBgColor("white")
-                setSize("60px")
+                setColor("white")
             }, 1000)
             return () => clearTimeout(timeout)
         }
     }, [isVisible])
 
     return (
-        <div className={styles.buttonContainer}>
-            <div
-                style={{ backgroundColor: bgColor, height: size, width: size }}
-                className={styles.button}>
-                <CaretDownOutlined />
-            </div>
-        </div>
+        <Box marginTop="3em" color={color} transition="color 0.2s ease-in-out">
+            <TriangleDownIcon />
+        </Box>
     )
 }
 

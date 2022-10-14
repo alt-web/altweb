@@ -6,7 +6,6 @@ import { Box, Flex } from "@chakra-ui/react"
 import { Heading } from "@chakra-ui/react"
 
 import { useState, FormEvent } from "react"
-import { MailOutlined, RightOutlined } from "@ant-design/icons"
 
 const EmailForm = () => {
     const [input, setInput] = useState("")
