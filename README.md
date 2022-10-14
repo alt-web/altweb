@@ -5,7 +5,7 @@ This is a [Next.js](https://nextjs.org/) project.
 First, run the development server:
 
 ```bash
-npm run dev
+sudo docker-compose -f docker/docker-dev.yml --project-directory . up --build
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
