@@ -4,7 +4,7 @@ import styles from "../styles/index.module.css"
 import ConsoleScreen from "../lib/frontpage/console"
 import Team from "../lib/frontpage/team"
 import Features from "../lib/frontpage/features"
-import EmailForm from "../lib/email-form"
+import LoginForm from "../lib/auth"
 
 const Home: NextPage = () => {
     return (
@@ -14,7 +14,7 @@ const Home: NextPage = () => {
             </Head>
             <ConsoleScreen />
             <Features />
-            <EmailForm />
+            <LoginForm />
         </div>
     )
 }
