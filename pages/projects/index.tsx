@@ -1,10 +1,11 @@
 import type { NextPage } from "next"
+import Link from "next/link"
 import Head from "next/head"
 import useSWR from "swr"
 import { useRouter } from "next/router"
 import { useEffect } from "react"
 import { withIronSessionSsr } from "iron-session/next"
-import { Heading, Flex, Button } from "@chakra-ui/react"
+import { Heading, Flex, Button, Box } from "@chakra-ui/react"
 import { sessionOptions } from "../../lib/session"
 import { ProjectsAPI } from "../api/projects"
 
@@ -39,7 +40,11 @@ const Projects: NextPage<PageProps> = props => {
     if (!data) return <div>Loading</div>
 
     const listOfProjects = data.projects ? (
-        data.projects.map(project => <div key={project.id}>{project.name}</div>)
+        data.projects.map(project => (
+            <Project id={project.id} key={project.id}>
+                {project.name}
+            </Project>
+        ))
     ) : (
         <div>Error</div>
     )
@@ -66,6 +71,16 @@ const Projects: NextPage<PageProps> = props => {
                 Create project
             </Button>
         </Flex>
+    )
+}
+
+const Project = (props: { id: number; children: string }) => {
+    return (
+        <Link href={`/projects/${props.id}`} passHref>
+            <a>
+                <Box>{props.children}</Box>
+            </a>
+        </Link>
     )
 }
 
