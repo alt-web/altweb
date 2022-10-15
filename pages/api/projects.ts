@@ -15,7 +15,8 @@ async function endpoint(
     req: NextApiRequest,
     res: NextApiResponse<ProjectsAPI>
 ) {
-    if (req.method == "GET") await getProjects(req, res)
+    if (req.method === "GET") await getProjects(req, res)
+    else if (req.method === "POST") await addProject(req, res)
     else res.status(400).json({ msg: "Request method is not supported" })
 }
 
@@ -38,6 +39,33 @@ const getProjects = async (
         })
         if (!projects) throw new Error("Can't get your list of projects")
         res.send({ projects: projects })
+    } catch (err) {
+        const msg =
+            err instanceof Error && err.message ? err.message : "Unknown error"
+        res.status(400).send({ msg })
+    }
+}
+
+const addProject = async (req: NextApiRequest, res: NextApiResponse) => {
+    try {
+        if (!req.session.user) throw new Error("You are not authorized")
+        if (!req.body.name) throw new Error("Please provide project name")
+        const project = await prisma.project.create({
+            data: {
+                name: req.body.name,
+                users: {
+                    create: {
+                        user: {
+                            connect: {
+                                email: req.session.user.email,
+                            },
+                        },
+                    },
+                },
+            },
+        })
+        if (!project) throw new Error("Can't create new project")
+        res.status(200).send({ msg: "ok" })
     } catch (err) {
         const msg =
             err instanceof Error && err.message ? err.message : "Unknown error"
