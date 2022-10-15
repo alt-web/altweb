@@ -8,15 +8,34 @@ datasource db {
 }
 
 model User {
-    id          Int       @id @default(autoincrement())
-    email       String    @unique
+    id          Int             @id @default(autoincrement())
+    email       String          @unique
     salt        String
     hash        String
     name        String?
+    projects    Participants[]
 }
 
 model CookiePassword {
     id          Int        @id @default(autoincrement())
     value       String
     createdAt   DateTime   @default(now())
+}
+
+model Project {
+    id              Int             @id @default(autoincrement())
+    name            String
+    description     String?
+    approved        Boolean         @default(false)
+    createdAt       DateTime        @default(now())
+    users           Participants[]
+}
+
+model Participants {
+    project       Project     @relation(fields: [projectId], references: [id])
+    projectId     Int
+    user          User        @relation(fields: [userId], references: [id])
+    userId        Int
+
+    @@id([projectId, userId])
 }

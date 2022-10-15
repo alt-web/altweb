@@ -28,7 +28,7 @@ const LoginForm = () => {
     }
 
     const onSuccess = () => {
-        router.push("/shelter")
+        router.push("/projects")
     }
 
     return (
