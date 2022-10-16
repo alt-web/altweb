@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { withIronSessionApiRoute } from "iron-session/next"
-import { Project } from "@prisma/client"
+import { Project, Task } from "@prisma/client"
 import { prisma } from "../../../lib/prisma"
 import { sessionOptions } from "../../../lib/session"
 
@@ -8,7 +8,7 @@ export default withIronSessionApiRoute(endpoint, sessionOptions)
 
 export type ProjectsAPI = {
     msg?: string
-    project?: Project
+    project?: Project & { tasks: Task[] }
 }
 
 async function endpoint(
@@ -34,6 +34,9 @@ const getProjects = async (
                         user: { email: req.session.user.email },
                     },
                 },
+            },
+            include: {
+                tasks: true,
             },
         })
         if (!project || project.length !== 1)
