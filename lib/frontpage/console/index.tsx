@@ -46,11 +46,7 @@ const Line = ({
         }
     }, [isVisible, sliceEnd])
 
-    return (
-        <div className={styles.line}>
-            {children.slice(0, sliceEnd)}
-        </div>
-    )
+    return <div className={styles.line}>{children.slice(0, sliceEnd)}</div>
 }
 
 const Triangle = ({ isVisible }: { isVisible: boolean }) => {
@@ -66,7 +62,7 @@ const Triangle = ({ isVisible }: { isVisible: boolean }) => {
     }, [isVisible])
 
     return (
-        <div style={{color: color}} className={styles.triangle}>
+        <div style={{ color: color }} className={styles.triangle}>
             <TriangleDownIcon />
         </div>
     )

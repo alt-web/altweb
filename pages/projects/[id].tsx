@@ -3,7 +3,7 @@ import { useRouter } from "next/router"
 import Head from "next/head"
 import useSWR, { useSWRConfig } from "swr"
 import Link from "next/link"
-import { ArrowBackIcon } from "@chakra-ui/icons"
+import { ReactNode } from "react"
 import { ProjectsAPI } from "../api/projects/[id]"
 import Tasks from "../../lib/project/tasks"
 import styles from "../../styles/projects/id.module.css"
@@ -18,32 +18,34 @@ const ProjectView: NextPage = () => {
         if (router.query.id) mutate(`/api/projects/${router.query.id}`)
     }
 
-    if (!router.query.id || error) return <div>Error</div>
-    if (!data) return <div>Loading</div>
-    if (!data.project) return <div>Project is undefined</div>
+    if (!router.query.id || error) return <Layout>Error</Layout>
+    if (!data) return <Layout>Loading</Layout>
+    if (!data.project) return <Layout>Project is undefined</Layout>
 
     return (
-        <div className={styles.container}>
-            <Head>
-                <title>Project | Alt Web</title>
-            </Head>
-            <div className={styles.navigation}>
+        <Layout>
+            <h2>
                 <Link href="/projects" passHref>
-                    <a>
-                        <button>
-                        <ArrowBackIcon />
-                        </button>
-                    </a>
-                </Link>
-                <h4>{data.project.name} - settings</h4>
-            </div>
+                    <a>My projects</a>
+                </Link>{" "}
+                / {data.project.name}
+            </h2>
             <Tasks
                 projectId={data.project.id}
                 taskList={data.project.tasks}
                 onUpdate={update}
             />
-        </div>
+        </Layout>
     )
 }
+
+const Layout = ({ children }: { children: ReactNode }) => (
+    <div className={styles.container}>
+        <Head>
+            <title>Project | Alt Web</title>
+        </Head>
+        {children}
+    </div>
+)
 
 export default ProjectView

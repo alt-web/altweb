@@ -1,36 +1,62 @@
 .newTask {
     display: flex;
     width: 100%;
-    gap: 1em;
+    gap: 10px;
+}
+
+.newTask input,
+.newTask button {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: inherit;
+    border: none;
+    outline: none;
+    padding: 10px;
 }
 
 .newTask input {
-    border: 1px solid gray;
-    padding: 4px;
     flex-grow: 1;
-    border-radius: 6px;
 }
 
 .newTask button {
-    border: 1px solid gray;
-    border-radius: 6px;
-    padding: 4px;
+    min-width: 40px;
+    cursor: pointer;
+}
+
+.newTask button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .task {
     display: flex;
-    gap: 1em;
+    align-items: center;
+    gap: 10px;
     width: 100%;
-    padding: 6px;
-    border: 1px solid gray;
+    padding: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
     margin-top: 1em;
-    border-radius: 6px;
+    border-radius: 10px;
 }
 
 .task input {
     cursor: pointer;
+    border: none;
+    outline: none;
 }
 
 .name {
     flex-grow: 1;
+}
+
+.task button {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: inherit;
+    border: none;
+    padding: 6px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.task button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }

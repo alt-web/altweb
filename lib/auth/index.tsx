@@ -37,9 +37,7 @@ const LoginForm = () => {
 
                 <div className={styles.error}>{msg}</div>
 
-                <button type="submit">
-                    Continue
-                </button>
+                <button type="submit">Continue</button>
             </form>
         </div>
     )
@@ -57,21 +55,24 @@ const EmailField = ({
     }
 
     const mailFormat =
-        /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+        "^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$"
     const isError = value !== "" && !value.match(mailFormat)
 
     return (
         <div>
             <EmailIcon />
             <input
-                    name="email"
-                    type="email"
-                    placeholder="Email"
-                    value={value}
-                    onChange={handleInputChange}
-                    required
-                />
-            { isError && <div className={styles.error}>Please enter a valid email</div> }
+                name="email"
+                type="email"
+                placeholder="Email"
+                pattern={mailFormat}
+                value={value}
+                onChange={handleInputChange}
+                required
+            />
+            {isError && (
+                <div className={styles.error}>Please enter a valid email</div>
+            )}
         </div>
     )
 }
@@ -87,22 +88,26 @@ const PasswordField = ({
         setValue(e.currentTarget.value)
     }
 
-    const isError =
-        (value.length > 0 && value.length < 6) ||
-        ["123456", "qwerty"].includes(value)
+    const passwordFormat = "^.{6,}$"
+    const isError = value !== "" && !value.match(passwordFormat)
 
     return (
         <div>
-                    <LockIcon />
-                <input
-                    name="password"
-                    type="password"
-                    placeholder="Password"
-                    value={value}
-                    onChange={handleInputChange}
-                    required
-                />
-            { isError && <div className={styles.error}>Password is unsafe or too short</div> }
+            <LockIcon />
+            <input
+                name="password"
+                type="password"
+                placeholder="Password"
+                pattern={passwordFormat}
+                value={value}
+                onChange={handleInputChange}
+                required
+            />
+            {isError && (
+                <div className={styles.error}>
+                    Password is unsafe or too short
+                </div>
+            )}
         </div>
     )
 }

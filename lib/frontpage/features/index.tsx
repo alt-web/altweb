@@ -49,9 +49,7 @@ const Feature = ({
         <div className={styles.feature}>
             <div className={styles.heading}>
                 <div className={styles.icon}>{icon}</div>
-                <h4>
-                    {title}
-                </h4>
+                <h4>{title}</h4>
             </div>
             <div>{children}</div>
         </div>

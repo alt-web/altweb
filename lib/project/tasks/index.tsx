@@ -34,7 +34,7 @@ const Tasks = ({
                         placeholder="Title"
                         required
                     />
-                    <button type="submit">Add new task</button>
+                    <button type="submit">+</button>
                 </div>
             </form>
             {listOfTasks}
@@ -57,9 +57,11 @@ const Task = (props: {
     }
     return (
         <div className={styles.task}>
-            <input type="checkbox"
+            <input
+                type="checkbox"
                 checked={completed}
-                onChange={handleChange}/>
+                onChange={handleChange}
+            />
             <div className={styles.name}>{props.children}</div>
             <button onClick={() => deleteTask(props.id, props.update)}>
                 Delete

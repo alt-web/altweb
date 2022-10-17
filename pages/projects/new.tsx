@@ -3,13 +3,11 @@ import { useRouter } from "next/router"
 import Head from "next/head"
 import { FormEvent, useState } from "react"
 import styles from "../../styles/projects/new.module.css"
+import Link from "next/link"
 
 const NewProject: NextPage = () => {
     const router = useRouter()
     const [error, setError] = useState("")
-    const goBack = () => {
-        router.push("/projects")
-    }
     const setErrorMessage = (msg: string) => {
         setError(msg)
     }
@@ -21,19 +19,23 @@ const NewProject: NextPage = () => {
             <Head>
                 <title>New project | Alt Web</title>
             </Head>
-            <h2>New project</h2>
+            <h2>
+                <Link href="/projects" passHref>
+                    <a>My projects</a>
+                </Link>{" "}
+                / New project
+            </h2>
             <form onSubmit={e => submitForm(e, setErrorMessage, onSuccess)}>
-                <input
-                    required
-                    name="projectName"
-                    placeholder="Project name"
-                    type="text"
-                />
-                <button onClick={goBack}>Cancel</button>
-                <button type="submit">
-                    Create
-                </button>
-                <div>{error}</div>
+                <div className={styles.list}>
+                    <input
+                        required
+                        name="projectName"
+                        placeholder="Project name"
+                        type="text"
+                    />
+                    <button type="submit">Create</button>
+                </div>
+                <div className={styles.error}>{error}</div>
             </form>
         </div>
     )

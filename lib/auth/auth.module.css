@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 2em;
+    gap: 10px;
 
     width: 100%;
     min-height: 100vh;
@@ -11,10 +11,31 @@
     color: black;
 }
 
+.container h2 {
+    margin: 0px;
+}
+
 .error {
     color: red;
+    margin-top: 4px;
+}
+
+.container input,
+.container button {
+    padding: 10px;
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 10px;
+}
+
+.container input {
+    margin-left: 10px;
+    outline: none;
 }
 
 .container button {
     width: 100%;
+    cursor: pointer;
+    font-weight: bold;
 }

@@ -1,8 +1,52 @@
 .container {
     min-height: 100vh;
-    background-color: #000;
+    background-color: #0c0c11;
+    padding: 2em;
 }
 
 .container h2 {
     margin-top: 0;
+}
+
+.container a {
+    color: #aaa;
+}
+
+.container a:hover {
+    text-decoration: underline;
+}
+
+.list {
+    margin-top: 2em;
+    display: flex;
+    gap: 10px;
+}
+
+.container input,
+.container button {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    color: inherit;
+    font-weight: bold;
+}
+
+.container input {
+    font-family: "JetBrains Mono", monospace;
+}
+
+.container button {
+    cursor: pointer;
+}
+
+.container button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.error {
+    color: #f43333;
+    font-weight: bold;
+    margin-top: 1em;
 }
