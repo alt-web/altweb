@@ -5,9 +5,9 @@ import useSWR from "swr"
 import { useRouter } from "next/router"
 import { useEffect } from "react"
 import { withIronSessionSsr } from "iron-session/next"
-import { Heading, Flex, Button, Box } from "@chakra-ui/react"
 import { sessionOptions } from "../../lib/session"
 import { ProjectsAPI } from "../api/projects"
+import styles from "../../styles/projects/index.module.css"
 
 type PageProps = {
     isAuthorized: boolean
@@ -50,27 +50,19 @@ const Projects: NextPage<PageProps> = props => {
     )
 
     return (
-        <Flex
-            justify="center"
-            align="center"
-            direction="column"
-            gap="1em"
-            w="100%"
-            bgColor="#181720"
-            minH="100vh"
-            color="white">
+        <div className={styles.container}>
             <Head>
                 <title>Projects | Alt Web</title>
             </Head>
-            <Heading>Your projects</Heading>
+            <h2>Your projects</h2>
             {listOfProjects}
             {data.projects && data.projects.length === 0 && (
                 <div>You have no projects</div>
             )}
-            <Button onClick={newProject} color="black">
+            <button onClick={newProject}>
                 Create project
-            </Button>
-        </Flex>
+            </button>
+        </div>
     )
 }
 
@@ -78,7 +70,7 @@ const Project = (props: { id: number; children: string }) => {
     return (
         <Link href={`/projects/${props.id}`} passHref>
             <a>
-                <Box>{props.children}</Box>
+                <div>{props.children}</div>
             </a>
         </Link>
     )

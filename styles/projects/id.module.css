@@ -1,0 +1,18 @@
+.container {
+    padding: 1em;
+    background-color: #000;
+    min-height: 100vh;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navigation button {
+    cursor: pointer;
+    background-color: transparent;
+    color: inherit;
+    border: none;
+}

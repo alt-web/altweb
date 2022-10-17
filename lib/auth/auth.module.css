@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2em;
+
+    width: 100%;
+    min-height: 100vh;
+
+    color: black;
+}
+
+.error {
+    color: red;
+}
+
+.container button {
+    width: 100%;
+}

@@ -1,6 +1,6 @@
-import { Button, Input, Flex, Box, Checkbox } from "@chakra-ui/react"
 import { FormEvent, ChangeEvent, useState } from "react"
 import { Task } from "@prisma/client"
+import styles from "./tasks.module.css"
 
 const Tasks = ({
     projectId,
@@ -21,25 +21,24 @@ const Tasks = ({
         </Task>
     ))
     return (
-        <Box>
-            <div>Tasks:</div>
+        <div>
+            <h4>Tasks:</h4>
             <form
                 onSubmit={e => {
                     submitForm(e, projectId, onUpdate)
                 }}>
-                <Flex gap="1em">
-                    <Input
-                        variant="filled"
+                <div className={styles.newTask}>
+                    <input
                         type="text"
                         name="taskTitle"
                         placeholder="Title"
                         required
                     />
-                    <Button type="submit">Add new task</Button>
-                </Flex>
+                    <button type="submit">Add new task</button>
+                </div>
             </form>
             {listOfTasks}
-        </Box>
+        </div>
     )
 }
 
@@ -57,23 +56,15 @@ const Task = (props: {
         else setProgress(props.id, 0)
     }
     return (
-        <Flex
-            p="5px"
-            gap="10px"
-            marginTop="10px"
-            border="1px solid rgba(0,0,0,.2)"
-            borderRadius="10px">
-            <Checkbox
-                flexGrow="1"
-                size="lg"
-                isChecked={completed}
-                onChange={handleChange}>
-                {props.children}
-            </Checkbox>
-            <Button onClick={() => deleteTask(props.id, props.update)}>
+        <div className={styles.task}>
+            <input type="checkbox"
+                checked={completed}
+                onChange={handleChange}/>
+            <div className={styles.name}>{props.children}</div>
+            <button onClick={() => deleteTask(props.id, props.update)}>
                 Delete
-            </Button>
-        </Flex>
+            </button>
+        </div>
     )
 }
 

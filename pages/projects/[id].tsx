@@ -3,10 +3,10 @@ import { useRouter } from "next/router"
 import Head from "next/head"
 import useSWR, { useSWRConfig } from "swr"
 import Link from "next/link"
-import { IconButton, Button, Flex, Box, Heading } from "@chakra-ui/react"
 import { ArrowBackIcon } from "@chakra-ui/icons"
 import { ProjectsAPI } from "../api/projects/[id]"
 import Tasks from "../../lib/project/tasks"
+import styles from "../../styles/projects/id.module.css"
 
 const ProjectView: NextPage = () => {
     const router = useRouter()
@@ -19,33 +19,30 @@ const ProjectView: NextPage = () => {
     }
 
     if (!router.query.id || error) return <div>Error</div>
-
     if (!data) return <div>Loading</div>
-
     if (!data.project) return <div>Project is undefined</div>
 
     return (
-        <Box p="1em">
+        <div className={styles.container}>
             <Head>
                 <title>Project | Alt Web</title>
             </Head>
-            <Flex gap="1em" align="center">
+            <div className={styles.navigation}>
                 <Link href="/projects" passHref>
                     <a>
-                        <IconButton
-                            aria-label="Go back"
-                            icon={<ArrowBackIcon />}
-                        />
+                        <button>
+                        <ArrowBackIcon />
+                        </button>
                     </a>
                 </Link>
-                <Heading>{data.project.name} - settings</Heading>
-            </Flex>
+                <h4>{data.project.name} - settings</h4>
+            </div>
             <Tasks
                 projectId={data.project.id}
                 taskList={data.project.tasks}
                 onUpdate={update}
             />
-        </Box>
+        </div>
     )
 }
 

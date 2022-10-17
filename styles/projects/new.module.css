@@ -1,0 +1,8 @@
+.container {
+    min-height: 100vh;
+    background-color: #000;
+}
+
+.container h2 {
+    margin-top: 0;
+}

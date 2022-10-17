@@ -1,0 +1,36 @@
+.newTask {
+    display: flex;
+    width: 100%;
+    gap: 1em;
+}
+
+.newTask input {
+    border: 1px solid gray;
+    padding: 4px;
+    flex-grow: 1;
+    border-radius: 6px;
+}
+
+.newTask button {
+    border: 1px solid gray;
+    border-radius: 6px;
+    padding: 4px;
+}
+
+.task {
+    display: flex;
+    gap: 1em;
+    width: 100%;
+    padding: 6px;
+    border: 1px solid gray;
+    margin-top: 1em;
+    border-radius: 6px;
+}
+
+.task input {
+    cursor: pointer;
+}
+
+.name {
+    flex-grow: 1;
+}

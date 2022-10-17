@@ -1,11 +1,7 @@
-import { FormControl, FormErrorMessage } from "@chakra-ui/react"
-import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react"
-import { Button } from "@chakra-ui/react"
 import { EmailIcon, LockIcon } from "@chakra-ui/icons"
-import { Box, Flex } from "@chakra-ui/react"
-import { Heading } from "@chakra-ui/react"
 import { useRouter } from "next/router"
 import { useState, FormEvent } from "react"
+import styles from "./auth.module.css"
 
 const LoginForm = () => {
     const [email, setEmail] = useState("")
@@ -32,26 +28,20 @@ const LoginForm = () => {
     }
 
     return (
-        <Flex
-            alignItems="center"
-            justifyContent="center"
-            flexDirection="column"
-            gap="2em"
-            w="100%"
-            h="100vh">
-            <Heading>Create a free account</Heading>
+        <div className={styles.container}>
+            <h2>Create a free account</h2>
 
             <form onSubmit={e => submitForm(e, showMessage, onSuccess)}>
                 <EmailField value={email} setValue={setEmailValue} />
                 <PasswordField value={password} setValue={setPasswordValue} />
 
-                <Box color="red">{msg}</Box>
+                <div className={styles.error}>{msg}</div>
 
-                <Button type="submit" maxW="274px" w="100%">
+                <button type="submit">
                     Continue
-                </Button>
+                </button>
             </form>
-        </Flex>
+        </div>
     )
 }
 
@@ -71,22 +61,18 @@ const EmailField = ({
     const isError = value !== "" && !value.match(mailFormat)
 
     return (
-        <FormControl isRequired isInvalid={isError} marginBottom="1em">
-            <InputGroup>
-                <InputLeftElement pointerEvents="none">
-                    <EmailIcon color="gray.300" />
-                </InputLeftElement>
-                <Input
+        <div>
+            <EmailIcon />
+            <input
                     name="email"
                     type="email"
                     placeholder="Email"
-                    variant="filled"
                     value={value}
                     onChange={handleInputChange}
+                    required
                 />
-            </InputGroup>
-            <FormErrorMessage>Please enter a valid email</FormErrorMessage>
-        </FormControl>
+            { isError && <div className={styles.error}>Please enter a valid email</div> }
+        </div>
     )
 }
 
@@ -106,22 +92,18 @@ const PasswordField = ({
         ["123456", "qwerty"].includes(value)
 
     return (
-        <FormControl isRequired isInvalid={isError} marginBottom="1em">
-            <InputGroup>
-                <InputLeftElement pointerEvents="none">
-                    <LockIcon color="gray.300" />
-                </InputLeftElement>
-                <Input
+        <div>
+                    <LockIcon />
+                <input
                     name="password"
                     type="password"
                     placeholder="Password"
-                    variant="filled"
                     value={value}
                     onChange={handleInputChange}
+                    required
                 />
-            </InputGroup>
-            <FormErrorMessage>Password is unsafe or too short</FormErrorMessage>
-        </FormControl>
+            { isError && <div className={styles.error}>Password is unsafe or too short</div> }
+        </div>
     )
 }
 

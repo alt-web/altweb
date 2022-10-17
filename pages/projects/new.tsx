@@ -1,9 +1,8 @@
 import type { NextPage } from "next"
 import { useRouter } from "next/router"
 import Head from "next/head"
-import { Button } from "@chakra-ui/react"
-import { Heading, Input, FormControl, FormLabel } from "@chakra-ui/react"
 import { FormEvent, useState } from "react"
+import styles from "../../styles/projects/new.module.css"
 
 const NewProject: NextPage = () => {
     const router = useRouter()
@@ -18,23 +17,22 @@ const NewProject: NextPage = () => {
         router.push("/projects")
     }
     return (
-        <div>
+        <div className={styles.container}>
             <Head>
                 <title>New project | Alt Web</title>
             </Head>
-            <Heading>New project</Heading>
+            <h2>New project</h2>
             <form onSubmit={e => submitForm(e, setErrorMessage, onSuccess)}>
-                <Input
+                <input
                     required
                     name="projectName"
-                    variant="filled"
                     placeholder="Project name"
                     type="text"
                 />
-                <Button onClick={goBack}>Cancel</Button>
-                <Button type="submit" colorScheme="blue">
+                <button onClick={goBack}>Cancel</button>
+                <button type="submit">
                     Create
-                </Button>
+                </button>
                 <div>{error}</div>
             </form>
         </div>

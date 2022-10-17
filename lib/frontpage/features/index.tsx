@@ -1,23 +1,17 @@
 import { ReactNode } from "react"
-import { Heading, Text, Flex, Box } from "@chakra-ui/react"
 import {
     ChatIcon,
     DownloadIcon,
     RepeatIcon,
     SettingsIcon,
 } from "@chakra-ui/icons"
+import styles from "./features.module.css"
 
 const Features = () => {
     return (
-        <Flex
-            justify="center"
-            align="center"
-            direction="column"
-            gap="2em"
-            w="100%"
-            h="100vh">
-            <Heading>Our features</Heading>
-            <Flex maxW="720px" wrap="wrap" gap="1em" justify="space-between">
+        <div className={styles.container}>
+            <h2>Our features</h2>
+            <div className={styles.grid}>
                 <Feature icon={<DownloadIcon />} title="You own everything">
                     You have access to the project&apos;s source code,
                     containers, and databases. You are not tied to our
@@ -37,8 +31,8 @@ const Features = () => {
                     You don&apos;t have to worry about buying a server. You can
                     host your project in our cloud.
                 </Feature>
-            </Flex>
-        </Flex>
+            </div>
+        </div>
     )
 }
 
@@ -52,22 +46,15 @@ const Feature = ({
     icon: ReactNode
 }) => {
     return (
-        <Flex
-            direction="column"
-            border="1px solid gray"
-            w="100%"
-            maxW="350px"
-            borderRadius="10px"
-            p="1em"
-            gap="1em">
-            <Flex gap="1em" align="center">
-                <Box color="#008465">{icon}</Box>
-                <Heading as="h5" size="sm">
+        <div className={styles.feature}>
+            <div className={styles.heading}>
+                <div className={styles.icon}>{icon}</div>
+                <h4>
                     {title}
-                </Heading>
-            </Flex>
-            <Text>{children}</Text>
-        </Flex>
+                </h4>
+            </div>
+            <div>{children}</div>
+        </div>
     )
 }
 
