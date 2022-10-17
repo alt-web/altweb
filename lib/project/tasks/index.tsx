@@ -22,7 +22,6 @@ const Tasks = ({
     ))
     return (
         <div>
-            <h4>Tasks:</h4>
             <form
                 onSubmit={e => {
                     submitForm(e, projectId, onUpdate)

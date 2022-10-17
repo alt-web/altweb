@@ -1,0 +1,12 @@
+.container input {
+    background-color: rgba(255,255,255,.1);
+    color: inherit;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+}
+
+.container h4 {
+    margin-bottom: 10px;
+}
