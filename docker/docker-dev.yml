@@ -4,12 +4,12 @@ services:
             dockerfile: docker/dev.Dockerfile
             context: .
         volumes:
-            - ./lib:/app/lib:ro
-            - ./next.config.js:/app/next.config.js:ro
-            - ./prisma:/app/prisma
-            - ./pages:/app/pages:ro
-            - ./public:/app/public
-            - ./styles:/app/styles:ro
+            - ./lib:/app/lib:ro,z
+            - ./next.config.js:/app/next.config.js:ro,z
+            - ./prisma:/app/prisma:z
+            - ./pages:/app/pages:ro,z
+            - ./public:/app/public:z
+            - ./styles:/app/styles:ro,z
         restart: unless-stopped
         ports:
             - 3000:3000
