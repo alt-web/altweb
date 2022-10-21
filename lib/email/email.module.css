@@ -1,0 +1,31 @@
+.container {
+    width: 100%;
+}
+
+.container form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3em;
+}
+
+.container input {
+    height: 50px;
+    width: 100%;
+    max-width: 300px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    text-indent: 10px;
+    font-weight: 700;
+}
+
+.container button {
+    height: 50px;
+    width: 50px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-left: 10px;
+}

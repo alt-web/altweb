@@ -1,20 +1,18 @@
 import type { NextPage } from "next"
 import Head from "next/head"
-import styles from "../styles/index.module.css"
-import ConsoleScreen from "../lib/frontpage/console"
-import Team from "../lib/frontpage/team"
-import Features from "../lib/frontpage/features"
-import LoginForm from "../lib/auth"
+import Header from "../lib/header"
+import Title from "../lib/title"
+import EmailForm from "../lib/email"
 
 const Home: NextPage = () => {
     return (
-        <div className={styles.container}>
+        <div>
             <Head>
-                <title>Alt | Web</title>
+                <title>Alt Web</title>
             </Head>
-            <ConsoleScreen />
-            <Features />
-            <LoginForm />
+            <Header />
+            <Title />
+            <EmailForm />
         </div>
     )
 }
