@@ -12,20 +12,25 @@
 .container input {
     height: 50px;
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
     border: none;
     outline: none;
-    border-radius: 10px;
-    text-indent: 10px;
+    border-radius: 6px;
+    text-indent: 16px;
     font-weight: 700;
+    font-size: 14px;
+    background-color: rgba(255,255,255,.7);
 }
 
 .container button {
     height: 50px;
     width: 50px;
-    background-color: green;
+    background-color: #1755b4;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 6px;
     margin-left: 10px;
+    box-shadow: 0 0 12px #1755b466;
+    cursor: pointer;
+    outline: none;
 }

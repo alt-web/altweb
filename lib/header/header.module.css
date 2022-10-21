@@ -1,14 +1,28 @@
 .container {
     padding-top: 30px;
     padding-bottom: 30px;
+    padding-left: 60px;
+    padding-right: 60px;
     display: flex;
-    justify-content: space-around;
+    gap: 80px;
     align-items: center;
     font-weight: 300;
 }
 
 .link {
-    padding: 20px;
+    padding: 5px;
+}
+
+.underline {
+    width: 0%;
+    background-color: #3f3fc2;
+    height: 8px;
+    margin-top: -8px;
+    transition: width 0.15s ease-in-out;
+}
+
+.linkContainer:hover .underline {
+    width: 100%;
 }
 
 .avatar {
@@ -16,4 +30,8 @@
     height: 40px;
     border-radius: 50%;
     background-color: #aaa;
+}
+
+.space {
+    flex-grow: 1;
 }
