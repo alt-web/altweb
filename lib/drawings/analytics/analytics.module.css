@@ -1,0 +1,25 @@
+.canvas {
+    width: 100%;
+    font-family: "JetBrains Mono", "monospace";
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #fffa;
+}
+
+.graph {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-top: 20px;
+    border-left: 2px solid #aaa;
+    border-bottom: 2px solid #aaa;
+    padding-left: 5px;
+    padding-bottom: 5px;
+}
+
+.bar {
+    width: 15px;
+    background-color: #493cff;
+}

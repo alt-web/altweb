@@ -1,0 +1,20 @@
+.canvas {
+    width: 100%;
+    font-family: "JetBrains Mono", "monospace";
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #fffa;
+}
+
+.commit {
+    width: 100%;
+    margin-top: 16px;
+    color: #333;
+}
+
+.commit svg {
+    color: green;
+    margin-right: 10px;
+}
