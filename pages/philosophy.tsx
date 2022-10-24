@@ -1,7 +1,6 @@
 import type { NextPage } from "next"
 import Head from "next/head"
 import Header from "../lib/header"
-import BG from "../lib/bg"
 import Paper from "../lib/paper"
 import Pod from "../lib/drawings/pod"
 import Changelog from "../lib/drawings/changelog"
@@ -13,7 +12,6 @@ const Philosophy: NextPage = () => {
             <Head>
                 <title>Философия - Alt Web</title>
             </Head>
-            <BG />
             <Header />
 
             <Paper>

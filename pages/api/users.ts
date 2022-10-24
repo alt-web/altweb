@@ -27,7 +27,8 @@ const createUser = async (req: NextApiRequest, res: NextApiResponse) => {
             // Check password
             if (getHash(req.body.password, user.salt) === user.hash) {
                 req.session.user = {
-                    email: user.email,
+                    login: user.email,
+                    isAdmin: false
                 }
                 await req.session.save()
                 res.status(200).json({})
@@ -48,7 +49,8 @@ const createUser = async (req: NextApiRequest, res: NextApiResponse) => {
             })
             if (!newUser) throw new Error("Cannot create user")
             req.session.user = {
-                email: req.body.email,
+                login: req.body.email,
+                isAdmin: false
             }
             await req.session.save()
             res.status(200).json({})

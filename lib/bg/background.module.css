@@ -3,7 +3,26 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
     z-index: -1;
-    opacity: 0.4;
+}
+
+.image {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.gradient {
+    width: 100%;
+    height: 30vh;
+    position: absolute;
+    top: 70vh;
+}
+
+.tint {
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    position: absolute;
+    background-color: rgba(0,0,0,.7);
 }

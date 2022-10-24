@@ -28,7 +28,7 @@ const getTask = async (req: NextApiRequest, res: NextApiResponse<TasksAPI>) => {
                 project: {
                     users: {
                         some: {
-                            user: { email: req.session.user.email },
+                            user: { email: req.session.user.login },
                         },
                     },
                 },
@@ -57,7 +57,7 @@ const deleteTask = async (
                     users: {
                         some: {
                             user: {
-                                email: req.session.user.email,
+                                email: req.session.user.login,
                             },
                         },
                     },
@@ -89,7 +89,7 @@ const updateTask = async (
                     users: {
                         some: {
                             user: {
-                                email: req.session.user.email,
+                                email: req.session.user.login,
                             },
                         },
                     },

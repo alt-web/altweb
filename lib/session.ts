@@ -39,5 +39,6 @@ declare module "iron-session" {
 }
 
 type User = {
-    email: string
+    login: string,
+    isAdmin: boolean
 }

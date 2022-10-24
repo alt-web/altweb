@@ -31,7 +31,7 @@ const getProjects = async (
                 id: parseInt(req.query.id.toString()),
                 users: {
                     some: {
-                        user: { email: req.session.user.email },
+                        user: { email: req.session.user.login },
                     },
                 },
             },

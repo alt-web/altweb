@@ -26,7 +26,7 @@ const addTask = async (req: NextApiRequest, res: NextApiResponse<TasksAPI>) => {
                 users: {
                     some: {
                         user: {
-                            email: req.session.user.email,
+                            email: req.session.user.login,
                         },
                     },
                 },

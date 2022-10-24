@@ -9,7 +9,6 @@ const Pricing: NextPage = () => {
         <div>
             <Head><title>Цены - Alt Web</title></Head>
             <Header />
-            <BG />
             <Service name="Разработка сайта"
                      description="Вы получите полностью готовый проект, с которым сможете делать всё, что душе угодно"
                      price={40000} />

@@ -31,7 +31,7 @@ const getProjects = async (
                 users: {
                     some: {
                         user: {
-                            email: req.session.user.email,
+                            email: req.session.user.login,
                         },
                     },
                 },
@@ -57,7 +57,7 @@ const addProject = async (req: NextApiRequest, res: NextApiResponse) => {
                     create: {
                         user: {
                             connect: {
-                                email: req.session.user.email,
+                                email: req.session.user.login,
                             },
                         },
                     },

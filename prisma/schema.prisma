@@ -51,3 +51,17 @@ model Task {
     progress     Int        @default(0)
     priority     Int        @default(0)
 }
+
+//
+// Server settings
+//
+
+model Admin {
+    login    String     @id
+    hash     String
+}
+
+model Token {
+    id       String     @id
+    value    String     @unique
+}
