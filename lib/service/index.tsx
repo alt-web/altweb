@@ -18,7 +18,7 @@ const Service = (props: {name: string, description: string, price?: number, perM
 
 const Value = (props: {price?: number, perMonth?: boolean, discount?: number}) => {
     if (props.price !== undefined) {
-        let price = props.price.toLocaleString() + " ₽"
+        let price = props.price.toLocaleString("ru") + " ₽"
         if (props.perMonth) price += " / мес"
         if (props.price > 0) return <h2>{price}</h2>
         return <h2 className={styles.greatOffer}>{price}</h2>
