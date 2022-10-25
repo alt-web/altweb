@@ -1,80 +1,68 @@
 import type { NextPage } from "next"
 import Link from "next/link"
+import Image, { StaticImageData } from "next/image"
 import Head from "next/head"
-import useSWR from "swr"
-import { useRouter } from "next/router"
-import { useEffect, ReactNode } from "react"
-import { withIronSessionSsr } from "iron-session/next"
-import { AddIcon } from "@chakra-ui/icons"
-import { sessionOptions } from "../../lib/session"
-import { ProjectsAPI } from "../api/projects"
+import { ExternalLinkIcon } from "@chakra-ui/icons"
+import Paper from "../../lib/paper"
+import memento from "../../public/projects/memento.webp"
+import yy from "../../public/projects/yy.webp"
 import styles from "../../styles/projects/index.module.css"
 
-type PageProps = {
-    isAuthorized: boolean
-}
-
-export const getServerSideProps = withIronSessionSsr(async context => {
-    const user = context.req.session.user
-
-    const props: PageProps = {
-        isAuthorized: user !== undefined,
-    }
-    return { props }
-}, sessionOptions)
-
-const Projects: NextPage<PageProps> = props => {
-    const { data, error } = useSWR<ProjectsAPI, Error>("/api/projects")
-    const router = useRouter()
-
-    useEffect(() => {
-        if (!props.isAuthorized) {
-            setTimeout(() => router.push("/login"), 1000)
-        }
-    }, [props.isAuthorized])
-
-    const newProject = () => {
-        router.push("/projects/new")
-    }
-
-    if (error) return <Layout>Error</Layout>
-    if (!data) return <Layout>Loading</Layout>
-    if (!data.projects) return <Layout>Error</Layout>
-
-    const listOfProjects = data.projects.map(project => (
-        <Project id={project.id} key={project.id}>
-            {project.name}
-        </Project>
-    ))
-
+const Projects: NextPage = () => {
     return (
-        <Layout>
-            <h2>My projects</h2>
-            <div className={styles.list}>
-                {listOfProjects}
-                <button onClick={newProject}>
-                    <AddIcon />
-                </button>
-            </div>
-        </Layout>
+        <div>
+            <Head>
+                <title>Проекты - Alt Web</title>
+            </Head>
+
+            <Paper>
+                <ProjectName name="YY Studios" href="https://yy-studios.ru" />
+                <ProjectImage src={yy} />
+                Сайт агенства и платформа для художников
+            </Paper>
+
+            <Paper>
+                <ProjectName
+                    name="Memento"
+                    href="https://memento.comfycamp.space"
+                />
+                <ProjectImage src={memento} />
+                Экспериментальная социальная сеть
+            </Paper>
+
+            <Paper>
+                <ProjectName name="Nullchan" />
+                Новый форум (в разработке)
+            </Paper>
+        </div>
     )
 }
 
-const Layout = ({ children }: { children: ReactNode }) => (
-    <div className={styles.container}>
-        <Head>
-            <title>Projects | Alt Web</title>
-        </Head>
-        {children}
-    </div>
-)
-
-const Project = (props: { id: number; children: string }) => {
-    return (
-        <div className={styles.project}>
-            <Link href={`/projects/${props.id}`} passHref>
-                <a>{props.children}</a>
+const ProjectName = (props: { name: string; href?: string }) => {
+    if (props.href)
+        return (
+            <Link href={props.href} passHref>
+                <a target="_blank" rel="noreferer">
+                    <h3 className={styles.projectName}>
+                        {props.name}
+                        <ExternalLinkIcon />
+                    </h3>
+                </a>
             </Link>
+        )
+    return <h3>{props.name}</h3>
+}
+
+const ProjectImage = (props: { src: StaticImageData }) => {
+    return (
+        <div className={styles.projectImage}>
+            <Image
+                src={props.src}
+                alt="Project"
+                layout="fill"
+                objectFit="cover"
+                placeholder="blur"
+            />
         </div>
     )
 }

@@ -5,6 +5,7 @@ import "@fontsource/roboto/900.css"
 import { SWRConfig } from "swr"
 import type { AppProps } from "next/app"
 import Background from "../lib/bg"
+import Header from "../lib/header"
 import "../styles/globals.css"
 
 function AltWeb({ Component, pageProps }: AppProps) {
@@ -16,6 +17,7 @@ function AltWeb({ Component, pageProps }: AppProps) {
                     fetch(resource, init).then(res => res.json()),
             }}>
             <Background />
+            <Header />
             <Component {...pageProps} />
         </SWRConfig>
     )
