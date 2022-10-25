@@ -5,7 +5,6 @@ services:
             context: .
         volumes:
             - ./lib:/app/lib:ro,z
-            - ./next.config.js:/app/next.config.js:ro,z
             - ./prisma:/app/prisma:z
             - ./pages:/app/pages:ro,z
             - ./public:/app/public:z
@@ -21,7 +20,7 @@ services:
     postgres:
         image: postgres
         volumes:
-            - altweb-postgres-dev:/var/lib/postgresql/data
+            - altweb-db:/var/lib/postgresql/data
         environment:
             - POSTGRES_USER=ordinary-dev
             - POSTGRES_PASSWORD=e2t6dm0f
@@ -29,4 +28,4 @@ services:
         restart: unless-stopped
 
 volumes:
-    altweb-postgres-dev:
+    altweb-db:
