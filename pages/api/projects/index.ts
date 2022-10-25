@@ -28,12 +28,8 @@ const getProjects = async (
         if (!req.session.user) throw new Error("You are not authorized")
         const projects = await prisma.project.findMany({
             where: {
-                users: {
-                    some: {
-                        user: {
-                            email: req.session.user.login,
-                        },
-                    },
+                owner: {
+                    email: req.session.user.login,
                 },
             },
         })
@@ -53,13 +49,9 @@ const addProject = async (req: NextApiRequest, res: NextApiResponse) => {
         const project = await prisma.project.create({
             data: {
                 name: req.body.name,
-                users: {
-                    create: {
-                        user: {
-                            connect: {
-                                email: req.session.user.login,
-                            },
-                        },
+                owner: {
+                    connect: {
+                        email: req.session.user.login,
                     },
                 },
             },

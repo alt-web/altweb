@@ -29,10 +29,8 @@ const getProjects = async (
         const project = await prisma.project.findMany({
             where: {
                 id: parseInt(req.query.id.toString()),
-                users: {
-                    some: {
-                        user: { email: req.session.user.login },
-                    },
+                owner: {
+                    email: req.session.user.login,
                 },
             },
         })
