@@ -1,7 +1,7 @@
 import type { NextPage } from "next"
 import Head from "next/head"
 import Title from "../lib/title"
-import EmailForm from "../lib/email"
+import Auth from "../lib/auth"
 
 const Home: NextPage = () => {
     return (
@@ -10,7 +10,7 @@ const Home: NextPage = () => {
                 <title>Alt Web</title>
             </Head>
             <Title />
-            <EmailForm />
+            <Auth />
         </div>
     )
 }

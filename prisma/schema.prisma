@@ -10,10 +10,10 @@ datasource db {
 model User {
     id          Int             @id @default(autoincrement())
     email       String          @unique
-    salt        String
     hash        String
     name        String?
     projects    Participants[]
+    isAdmin     Boolean         @default(false)
 }
 
 model CookiePassword {
@@ -38,15 +38,6 @@ model Participants {
     userId        Int
 
     @@id([projectId, userId])
-}
-
-//
-// Server settings
-//
-
-model Admin {
-    login    String     @id
-    hash     String
 }
 
 model Token {
