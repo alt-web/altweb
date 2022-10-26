@@ -7,11 +7,10 @@ import { ReactNode, useState } from "react"
 import { ProjectsAPI } from "../api/projects/[id]"
 import Overview from "../../lib/project/overview"
 import Payments from "../../lib/project/payments"
-import styles from "../../styles/projects/id.module.css"
+import styles from "../../styles/overview/id.module.css"
 
 const ProjectView: NextPage = () => {
     const router = useRouter()
-    const [tabId, setTabId] = useState<"overview"|"payments">("overview")
     const { data, error } = useSWR<ProjectsAPI>(
         router.query.id ? `/api/projects/${router.query.id}` : null
     )
@@ -27,18 +26,19 @@ const ProjectView: NextPage = () => {
     return (
         <Layout>
             <h2>
-                <Link href="/projects" passHref>
-                    <a>My projects</a>
+                <Link href="/overview" passHref>
+                    <a>Мои проекты</a>
                 </Link>{" "}
                 / {data.project.name}
             </h2>
-            <div className={styles.tabs}>
-                <Tab isActive={tabId === "overview"} setActive={() => setTabId("overview")}>Overview</Tab>
-                <Tab isActive={tabId === "payments"} setActive={() => setTabId("payments")}>Payments</Tab>
-            </div>
-            { tabId === "overview" && <Overview name={data.project.name} 
-            description={data.project.description} createdAt={data.project.createdAt} approved={data.project.approved}/> }
-            { tabId === "payments" && <Payments /> }
+            <Overview
+                name={data.project.name}
+                description={data.project.description}
+                createdAt={data.project.createdAt}
+                approved={data.project.approved}
+                id={data.project.id}
+            />
+            <Payments />
         </Layout>
     )
 }
@@ -46,20 +46,10 @@ const ProjectView: NextPage = () => {
 const Layout = ({ children }: { children: ReactNode }) => (
     <div className={styles.container}>
         <Head>
-            <title>Project | Alt Web</title>
+            <title>Проект - Alt Web</title>
         </Head>
         {children}
     </div>
 )
-
-const Tab = ({children, isActive, setActive}: {children: string, isActive: boolean, setActive: () => void}) => {
-    if (isActive) return (
-        <button className={styles.activeBtn}>{children}</button>
-    )
-
-    return (
-        <button onClick={setActive} className={styles.inactiveBtn}>{children}</button>
-    )
-}
 
 export default ProjectView

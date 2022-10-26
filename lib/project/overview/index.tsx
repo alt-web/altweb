@@ -1,18 +1,114 @@
+import { useState, ChangeEvent } from "react"
+import { CheckIcon, SpinnerIcon, WarningIcon } from "@chakra-ui/icons"
 import styles from "./overview.module.css"
 
-const Overview = (props: {name: string, description: string|null, createdAt: Date, approved: boolean}) => {
+const Overview = (props: {
+    id: number
+    name: string
+    description: string | null
+    createdAt: Date
+    approved: boolean
+}) => {
     return (
         <div className={styles.container}>
-            <h4>Project name</h4>
-            <input value={props.name} readOnly />
-            <h4>Description</h4>
-            <input value={props.description ? props.description : undefined} readOnly />
-            <h4>Creation date</h4>
+            <h4>Название</h4>
+            <Property
+                name="name"
+                initialValue={props.name}
+                placeholder="Название проекта"
+                projectId={props.id}
+            />
+
+            <h4>Описание</h4>
+            <Property
+                name="description"
+                initialValue={props.description}
+                placeholder="Описание проекта. Например: интернет-магазин компании Alt Web"
+                projectId={props.id}
+            />
+
+            <h4>Дата создания</h4>
             <div>{new Date(props.createdAt).toLocaleString()}</div>
-            <h4>Approved?</h4>
-            <div>{props.approved ? "Yes" : "No"}</div>
+
+            <h4>Статус проекта?</h4>
+            <div>{props.approved ? "Одобрен" : "Не одобрен"}</div>
         </div>
     )
+}
+
+type States = "idle" | "saving" | "saved" | "error"
+
+const Property = (props: {
+    projectId: number
+    name: string
+    initialValue: string | null
+    placeholder: string
+}) => {
+    const [value, setValue] = useState(
+        props.initialValue ? props.initialValue : ""
+    )
+    const [state, setState] = useState<States>("idle")
+    const [timeoutId, setTimeoutId] = useState<number | undefined>(undefined)
+
+    const updateState = (v: States) => setState(v)
+
+    const handleInputEvent = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        setValue(e.target.value)
+        setState("idle")
+        clearTimeout(timeoutId)
+        const newTimeoutId = window.setTimeout(
+            () =>
+                saveProp(
+                    props.projectId,
+                    props.name,
+                    e.target.value,
+                    updateState
+                ),
+            1000
+        )
+        setTimeoutId(newTimeoutId)
+    }
+
+    return (
+        <div className={styles.property}>
+            <textarea
+                className={styles[props.name]}
+                value={value}
+                onChange={handleInputEvent}
+                placeholder={props.placeholder}
+            />
+            {state === "saving" && <SpinnerIcon />}
+            {state === "saved" && (
+                <span className={styles.green}>
+                    <CheckIcon />
+                </span>
+            )}
+            {state === "error" && (
+                <span className={styles.red}>
+                    <WarningIcon />
+                </span>
+            )}
+        </div>
+    )
+}
+
+const saveProp = async (
+    projectId: number,
+    name: string,
+    value: string,
+    setState: (arg0: States) => void
+) => {
+    setState("saving")
+    const options = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, value }),
+    }
+    const response = await fetch(`/api/projects/${projectId}`, options)
+    if (response.status === 200) setState("saved")
+    else setState("error")
 }
 
 export default Overview

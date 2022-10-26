@@ -3,9 +3,9 @@ import useSWRImmutable from "swr/immutable"
 import Head from "next/head"
 import Link from "next/link"
 import { useState, ReactNode, FormEvent } from "react"
-import Paper from "../lib/paper"
-import { ProjectsAPI } from "./api/projects"
-import styles from "../styles/overview.module.css"
+import Paper from "../../lib/paper"
+import { ProjectsAPI } from "../api/projects"
+import styles from "../../styles/overview/index.module.css"
 
 const Overview = () => {
     const { data, error } = useSWRImmutable<ProjectsAPI, Error>("/api/projects")
