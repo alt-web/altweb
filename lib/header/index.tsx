@@ -1,10 +1,11 @@
 import Link from "next/link"
+import { useRouter } from "next/router"
 import styles from "./header.module.css"
 
 const Header = () => {
     return (
         <div className={styles.container}>
-            <div>AW</div>
+            <MyLink href="/">ГЛАВНАЯ</MyLink>
             <Space />
             <MyLink href="/projects">ПРОЕКТЫ</MyLink>
             <MyLink href="/philosophy">ФИЛОСОФИЯ</MyLink>
@@ -15,27 +16,47 @@ const Header = () => {
     )
 }
 
-const MyLink = ({href, children}: {href: string, children: string}) => {
+const MyLink = ({ href, children }: { href: string; children: string }) => {
+    const router = useRouter()
+
     return (
         <div className={styles.linkContainer}>
             <Link href={href} passHref>
-                <a className={styles.link}>
-                    {children}
-                </a>
+                <a className={styles.link}>{children}</a>
             </Link>
-            <div className={styles.underline}></div>
+            <div
+                className={
+                    router.asPath === href
+                        ? styles.permanentUnderline
+                        : styles.underline
+                }></div>
         </div>
     )
 }
 
 const Avatar = () => {
+    const router = useRouter()
+
+    const style = router.asPath.startsWith("/overview")
+        ? {
+              width: "40px",
+              height: "40px",
+          }
+        : {}
+
     return (
-        <div className={styles.avatar}></div>
+        <div className={styles.avatarContainer}>
+            <Link href="/overview" passHref>
+                <a>
+                    <div style={style} className={styles.avatarStroke}>
+                        <div className={styles.avatar}></div>
+                    </div>
+                </a>
+            </Link>
+        </div>
     )
 }
 
-const Space = () => (
-    <div className={styles.space}></div>
-) 
+const Space = () => <div className={styles.space}></div>
 
 export default Header
