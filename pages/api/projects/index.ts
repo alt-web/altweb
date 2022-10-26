@@ -33,7 +33,8 @@ const getProjects = async (
                 },
             },
         })
-        if (!projects) throw new Error("Can't get your list of projects")
+        if (projects === undefined)
+            throw new Error("Can't get your list of projects")
         res.send({ projects: projects })
     } catch (err) {
         const msg =
