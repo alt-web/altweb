@@ -1,5 +1,4 @@
 .container {
-    padding: 2em;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -16,4 +15,11 @@
 
 .container a:hover {
     text-decoration: underline;
+}
+
+.tabs {
+    margin-top: 2em;
+    margin-bottom: 1em;
+    display: flex;
+    gap: 2em;
 }

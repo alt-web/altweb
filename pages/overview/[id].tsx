@@ -25,12 +25,11 @@ const ProjectView: NextPage = () => {
 
     return (
         <Layout>
-            <h2>
-                <Link href="/overview" passHref>
-                    <a>Мои проекты</a>
-                </Link>{" "}
-                / {data.project.name}
-            </h2>
+            <div className={styles.tabs}>
+                <Tab name="К СПИСКУ ПРОЕКТОВ" href="/overview" />
+                <Tab name="ИНФОРМАЦИЯ" href="" />
+                <Tab name="ПЛАТЕЖИ" href="payments" />
+            </div>
             <Overview
                 name={data.project.name}
                 description={data.project.description}
@@ -51,5 +50,19 @@ const Layout = ({ children }: { children: ReactNode }) => (
         {children}
     </div>
 )
+
+const Tab = (props: { name: string; href: string }) => {
+    const router = useRouter()
+
+    const href = props.href.startsWith("/")
+        ? props.href
+        : `/overview/${router.query.id}/${props.href}`
+
+    return (
+        <Link href={href} passHref>
+            <a>{props.name}</a>
+        </Link>
+    )
+}
 
 export default ProjectView
