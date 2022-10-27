@@ -60,7 +60,7 @@ const Tab = (props: { name: string; href: string }) => {
 
     return (
         <Link href={href} passHref>
-            <a>{props.name}</a>
+            {props.name}
         </Link>
     )
 }

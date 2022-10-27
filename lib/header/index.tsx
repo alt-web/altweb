@@ -21,8 +21,8 @@ const MyLink = ({ href, children }: { href: string; children: string }) => {
 
     return (
         <div className={styles.linkContainer}>
-            <Link href={href} passHref>
-                <a className={styles.link}>{children}</a>
+            <Link href={href} passHref className={styles.link}>
+                {children}
             </Link>
             <div
                 className={
@@ -47,11 +47,9 @@ const Avatar = () => {
     return (
         <div className={styles.avatarContainer}>
             <Link href="/overview" passHref>
-                <a>
-                    <div style={style} className={styles.avatarStroke}>
-                        <div className={styles.avatar}></div>
-                    </div>
-                </a>
+                <div style={style} className={styles.avatarStroke}>
+                    <div className={styles.avatar}></div>
+                </div>
             </Link>
         </div>
     )

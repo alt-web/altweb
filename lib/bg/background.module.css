@@ -12,6 +12,10 @@
     position: relative;
 }
 
+.image img {
+    object-fit: cover;
+}
+
 .gradient {
     width: 100%;
     height: 30vh;
@@ -24,5 +28,5 @@
     height: 100%;
     top: 0px;
     position: absolute;
-    background-color: rgba(0,0,0,.7);
+    background-color: rgba(0, 0, 0, 0.7);
 }

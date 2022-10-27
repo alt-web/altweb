@@ -19,9 +19,7 @@ const Overview = () => {
             {data.projects.map(project => (
                 <Paper key={project.id}>
                     <Link href={`/overview/${project.id}`} passHref>
-                        <a>
-                            <h2>{project.name.toUpperCase()}</h2>
-                        </a>
+                        <h2>{project.name.toUpperCase()}</h2>
                     </Link>
                     <div>
                         Статус: {project.approved ? "одобрен" : "не одобрен"}

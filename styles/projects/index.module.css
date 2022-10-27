@@ -13,3 +13,7 @@
     height: 250px;
     margin-bottom: 20px;
 }
+
+.projectImage img {
+    object-fit: cover;
+}

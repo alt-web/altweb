@@ -42,12 +42,10 @@ const ProjectName = (props: { name: string; href?: string }) => {
     if (props.href)
         return (
             <Link href={props.href} passHref>
-                <a target="_blank" rel="noreferer">
-                    <h3 className={styles.projectName}>
-                        {props.name}
-                        <ExternalLinkIcon />
-                    </h3>
-                </a>
+                <h3 className={styles.projectName}>
+                    {props.name}
+                    <ExternalLinkIcon />
+                </h3>
             </Link>
         )
     return <h3>{props.name}</h3>
@@ -56,13 +54,7 @@ const ProjectName = (props: { name: string; href?: string }) => {
 const ProjectImage = (props: { src: StaticImageData }) => {
     return (
         <div className={styles.projectImage}>
-            <Image
-                src={props.src}
-                alt="Project"
-                layout="fill"
-                objectFit="cover"
-                placeholder="blur"
-            />
+            <Image src={props.src} alt="Project" placeholder="blur" fill />
         </div>
     )
 }
