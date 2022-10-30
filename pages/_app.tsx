@@ -5,6 +5,7 @@ import "@fontsource/roboto/900.css"
 import { SWRConfig } from "swr"
 import Head from "next/head"
 import type { AppProps } from "next/app"
+import Tracking from "../lib/tracking"
 import Background from "../lib/bg"
 import Header from "../lib/header"
 import "../styles/globals.css"
@@ -17,6 +18,7 @@ function AltWeb({ Component, pageProps }: AppProps) {
                 fetcher: (resource, init) =>
                     fetch(resource, init).then(res => res.json()),
             }}>
+            <Tracking />
             <Favicons />
             <Background />
             <Header />
