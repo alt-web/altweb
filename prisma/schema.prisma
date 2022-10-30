@@ -25,6 +25,7 @@ model Project {
     owner           User            @relation(fields: [ownerId], references: [id])
     ownerId         Int
     payments        Payment[]
+    links           Link[]
 }
 
 model CookiePassword {
@@ -48,4 +49,13 @@ model Payment {
     code          String?
     project       Project   @relation(fields: [projectId], references: [id])
     projectId     Int
+}
+
+model Link {
+    id          Int         @id @default(autoincrement())
+    name        String
+    href        String
+    project     Project     @relation(fields: [projectId], references: [id])
+    projectId   Int
+    type        String?
 }
