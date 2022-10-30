@@ -5,8 +5,10 @@
     padding-right: 60px;
     display: flex;
     gap: 80px;
+    flex-wrap: wrap;
     align-items: center;
     font-weight: 300;
+    width: 100%;
 }
 
 .link {
@@ -56,4 +58,20 @@
 
 .space {
     flex-grow: 1;
+}
+
+@media screen and (max-width: 800px) {
+    .avatarContainer, .space {
+        display: none;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+    }
+
+    .link {
+        width: 100%;
+    }
 }
