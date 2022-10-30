@@ -34,11 +34,6 @@ model CookiePassword {
     createdAt   DateTime   @default(now())
 }
 
-model Token {
-    id       String     @id
-    value    String     @unique
-}
-
 model Payment {
     id            Int       @id @default(autoincrement())
     serviceName   String

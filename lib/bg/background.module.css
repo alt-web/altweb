@@ -1,32 +1,9 @@
 .background {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: -1;
-}
-
-.image {
-    width: 100%;
     height: 100vh;
-    position: relative;
-}
-
-.image img {
-    object-fit: cover;
-}
-
-.gradient {
-    width: 100%;
-    height: 30vh;
-    position: absolute;
-    top: 70vh;
-}
-
-.tint {
-    width: 100%;
-    height: 100%;
-    top: 0px;
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+    opacity: 0.4;
 }
