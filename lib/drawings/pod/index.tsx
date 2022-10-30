@@ -12,7 +12,7 @@ const Pod = () => {
     )
 }
 
-const Container = ({children}: {children: string}) => (
+const Container = ({ children }: { children: string }) => (
     <div className={styles.container}>
         {children}
         <DragHandleIcon />

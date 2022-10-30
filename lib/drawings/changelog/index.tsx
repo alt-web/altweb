@@ -12,7 +12,7 @@ const Changelog = () => {
     )
 }
 
-const Commit = ({children}: {children: string}) => (
+const Commit = ({ children }: { children: string }) => (
     <div className={styles.commit}>
         <CheckCircleIcon />
         {children}

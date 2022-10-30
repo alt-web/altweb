@@ -61,7 +61,8 @@
 }
 
 @media screen and (max-width: 800px) {
-    .avatarContainer, .space {
+    .avatarContainer,
+    .space {
         display: none;
     }
 

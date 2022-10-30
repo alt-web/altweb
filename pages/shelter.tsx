@@ -11,7 +11,12 @@ const Shelter = () => {
             <h1>Shelter</h1>
             <form onSubmit={e => login(e, redirect)}>
                 <input name="login" required placeholder="Login" type="text" />
-                <input name="password" required placeholder="Password" type="password" />
+                <input
+                    name="password"
+                    required
+                    placeholder="Password"
+                    type="password"
+                />
                 <button>Log in</button>
             </form>
         </div>
@@ -23,15 +28,18 @@ interface LoginForm extends HTMLFormElement {
     password: HTMLInputElement
 }
 
-const login = async(e: FormEvent, onSuccess: () => void) => {
+const login = async (e: FormEvent, onSuccess: () => void) => {
     e.preventDefault()
     const target = e.target as LoginForm
     const options = {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         },
-        body: JSON.stringify({ login: target.login.value, password: target.password.value })
+        body: JSON.stringify({
+            login: target.login.value,
+            password: target.password.value,
+        }),
     }
     const response = await fetch("/api/admin", options)
     if (response.status === 200) onSuccess()

@@ -15,5 +15,6 @@ podman build -f docker/prod.Dockerfile .
 ```
 
 ## Podman
+
 In our examples, we use podman, but you can safely replace it with docker.
 However, you may need to add `sudo` before the command.
