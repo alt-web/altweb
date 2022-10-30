@@ -9,7 +9,8 @@ export default withIronSessionApiRoute(endpoint, sessionOptions)
 
 export type ProjectsAPI = {
     msg?: string
-    project?: Project & { links: Link[] }
+    project?: Project
+    isAdmin?: boolean
 }
 
 async function endpoint(
@@ -41,7 +42,10 @@ const getProjects = async (
         })
         if (!project || project.length !== 1)
             throw new Error("Can't find this project")
-        res.status(200).json({ project: project[0] })
+        res.status(200).json({
+            project: project[0],
+            isAdmin: req.session.user.isAdmin,
+        })
     } catch (err) {
         const msg =
             err instanceof Error && err.message ? err.message : "Unknown error"
@@ -83,6 +87,18 @@ const updateProject = async (
                 where,
                 data: {
                     description: req.body.value,
+                },
+            })
+            if (!updatedProject) throw new Error("Can't update your project")
+            res.status(200).json({})
+            return
+        }
+
+        if (req.body.name === "approved") {
+            const updatedProject = await prisma.project.updateMany({
+                where,
+                data: {
+                    approved: req.body.value,
                 },
             })
             if (!updatedProject) throw new Error("Can't update your project")

@@ -36,6 +36,7 @@ const ProjectView: NextPage = () => {
                 createdAt={data.project.createdAt}
                 approved={data.project.approved}
                 id={data.project.id}
+                isAdmin={data.isAdmin}
             />
             <Links />
         </Layout>

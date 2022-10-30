@@ -8,6 +8,7 @@ const Overview = (props: {
     description: string | null
     createdAt: Date
     approved: boolean
+    isAdmin?: boolean
 }) => {
     return (
         <div className={styles.container}>
@@ -32,8 +33,25 @@ const Overview = (props: {
 
             <h4>Статус проекта?</h4>
             <div>{props.approved ? "Одобрен" : "Не одобрен"}</div>
+            {props.approved === false && props.isAdmin && (
+                <button onClick={() => approveProject(props.id)}>
+                    Approve
+                </button>
+            )}
         </div>
     )
+}
+
+const approveProject = async (id: number) => {
+    const options = {
+        headers: {
+            "Content-Type": "application/json",
+        },
+        method: "PUT",
+        body: JSON.stringify({ name: "approved", value: true }),
+    }
+
+    const reponse = await fetch(`/api/projects/${id}`, options)
 }
 
 type States = "idle" | "saving" | "saved" | "error"
