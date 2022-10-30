@@ -6,7 +6,6 @@ import Link from "next/link"
 import { ReactNode, useState } from "react"
 import { ProjectsAPI } from "../api/projects/[id]"
 import Overview from "../../lib/project/overview"
-import Payments from "../../lib/project/payments"
 import styles from "../../styles/overview/id.module.css"
 
 const ProjectView: NextPage = () => {
@@ -37,7 +36,6 @@ const ProjectView: NextPage = () => {
                 approved={data.project.approved}
                 id={data.project.id}
             />
-            <Payments />
         </Layout>
     )
 }

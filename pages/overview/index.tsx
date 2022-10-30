@@ -11,7 +11,7 @@ const Overview = () => {
     const { data, error } = useSWRImmutable<ProjectsAPI, Error>("/api/projects")
 
     if (error) return <Layout>Error</Layout>
-    if (!data || !data.projects) return <Layout>Loading</Layout>
+    if (!data || data.projects === undefined) return <Layout>Loading</Layout>
 
     return (
         <Layout>

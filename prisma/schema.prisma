@@ -24,6 +24,7 @@ model Project {
     createdAt       DateTime        @default(now())
     owner           User            @relation(fields: [ownerId], references: [id])
     ownerId         Int
+    payments        Payment[]
 }
 
 model CookiePassword {
@@ -35,4 +36,16 @@ model CookiePassword {
 model Token {
     id       String     @id
     value    String     @unique
+}
+
+model Payment {
+    id            Int       @id @default(autoincrement())
+    serviceName   String
+    price         Int
+    isPaid        Boolean   @default(false)
+    createdAt     DateTime  @default(now())
+    paidAt        DateTime?
+    code          String?
+    project       Project   @relation(fields: [projectId], references: [id])
+    projectId     Int
 }
