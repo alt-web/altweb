@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /admin
+Disallow: /overview
+Disallow: /api
+Sitemap: https://altweb.tech/sitemap.xml
