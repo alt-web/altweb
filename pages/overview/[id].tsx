@@ -8,6 +8,21 @@ import { ProjectsAPI } from "../api/projects/[id]"
 import Overview from "../../lib/project/overview"
 import Links from "../../lib/project/links"
 import styles from "../../styles/overview/id.module.css"
+import { Navigation } from "../../lib/ui/navigation"
+import Payments from "./[id]/payments"
+
+const P = () => {
+    return (
+        <Navigation
+            tabs={["Информация", "Ссылки", "Платежи"]}
+            panels={[
+                <ProjectView key={0} />,
+                <Links key={1} />,
+                <Payments key={2} />,
+            ]}
+        />
+    )
+}
 
 const ProjectView: NextPage = () => {
     const router = useRouter()
@@ -25,11 +40,6 @@ const ProjectView: NextPage = () => {
 
     return (
         <Layout>
-            <div className={styles.tabs}>
-                <Tab name="К СПИСКУ ПРОЕКТОВ" href="/overview" />
-                <Tab name="ИНФОРМАЦИЯ" href="" />
-                <Tab name="ПЛАТЕЖИ" href="payments" />
-            </div>
             <Overview
                 name={data.project.name}
                 description={data.project.description}
@@ -38,7 +48,6 @@ const ProjectView: NextPage = () => {
                 id={data.project.id}
                 isAdmin={data.isAdmin}
             />
-            <Links />
         </Layout>
     )
 }
@@ -52,18 +61,4 @@ const Layout = ({ children }: { children: ReactNode }) => (
     </div>
 )
 
-const Tab = (props: { name: string; href: string }) => {
-    const router = useRouter()
-
-    const href = props.href.startsWith("/")
-        ? props.href
-        : `/overview/${router.query.id}/${props.href}`
-
-    return (
-        <Link href={href} passHref>
-            {props.name}
-        </Link>
-    )
-}
-
-export default ProjectView
+export default P

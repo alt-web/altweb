@@ -34,22 +34,37 @@ const Links = () => {
                     <a href={link.href} target="_blank" rel="noreferrer">
                         {link.name}
                     </a>
-                    <DeleteButton linkId={link.id} projectId={id} onChange={reload} />
+                    <DeleteButton
+                        linkId={link.id}
+                        projectId={id}
+                        onChange={reload}
+                    />
                 </div>
             ))}
             <form onSubmit={e => submitForm(e, id, reload)}>
                 <input placeholder="Имя" name="linkName" required />
                 <input placeholder="Url" name="href" required />
-                <Button><AddIcon /> Добавить ссылку</Button>
+                <Button>
+                    <AddIcon /> Добавить ссылку
+                </Button>
             </form>
         </div>
     )
 }
 
-function DeleteButton({linkId, projectId, onChange}: {linkId: number, projectId: number, onChange: () => void}) {
+function DeleteButton({
+    linkId,
+    projectId,
+    onChange,
+}: {
+    linkId: number
+    projectId: number
+    onChange: () => void
+}) {
     return (
-        <button onClick={() => deleteLink(linkId, projectId, onChange)}
-                className={styles.deleteButton}>
+        <button
+            onClick={() => deleteLink(linkId, projectId, onChange)}
+            className={styles.deleteButton}>
             <CloseIcon />
         </button>
     )
