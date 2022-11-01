@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import { AtSignIcon } from "@chakra-ui/icons"
 import AWLogo from "../../public/android-chrome-512x512.png"
 import { useRouter } from "next/router"
 import styles from "./header.module.css"
@@ -12,7 +13,6 @@ const Header = () => {
             <MyLink href="/projects">ПРОЕКТЫ</MyLink>
             <MyLink href="/philosophy">ФИЛОСОФИЯ</MyLink>
             <MyLink href="/pricing">ЦЕНЫ</MyLink>
-            <Space />
             <Avatar />
         </div>
     )
@@ -65,7 +65,9 @@ const Avatar = () => {
         <div className={styles.avatarContainer}>
             <Link href="/overview" passHref>
                 <div style={style} className={styles.avatarStroke}>
-                    <div className={styles.avatar}></div>
+                    <div className={styles.avatar}>
+                        <AtSignIcon />
+                    </div>
                 </div>
             </Link>
         </div>
