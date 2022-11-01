@@ -1,7 +1,10 @@
 import { useRouter } from "next/router"
 import useSWR, { useSWRConfig } from "swr"
 import { FormEvent } from "react"
+import { LinkIcon, CloseIcon, AddIcon } from "@chakra-ui/icons"
+import Button from "../../ui/button"
 import { LinksApi } from "../../../pages/api/projects/[id]/links"
+import styles from "./links.module.css"
 
 const Links = () => {
     const router = useRouter()
@@ -23,24 +26,32 @@ const Links = () => {
     }
 
     return (
-        <div>
+        <div className={styles.links}>
             <h4>Ссылки</h4>
             {data.links.map(link => (
-                <div key={link.id}>
+                <div key={link.id} className={styles.link}>
+                    <LinkIcon />
                     <a href={link.href} target="_blank" rel="noreferrer">
                         {link.name}
                     </a>
-                    <button onClick={() => deleteLink(link.id, id, reload)}>
-                        Delete
-                    </button>
+                    <DeleteButton linkId={link.id} projectId={id} onChange={reload} />
                 </div>
             ))}
             <form onSubmit={e => submitForm(e, id, reload)}>
                 <input placeholder="Имя" name="linkName" required />
                 <input placeholder="Url" name="href" required />
-                <input type="submit" />
+                <Button><AddIcon /> Добавить ссылку</Button>
             </form>
         </div>
+    )
+}
+
+function DeleteButton({linkId, projectId, onChange}: {linkId: number, projectId: number, onChange: () => void}) {
+    return (
+        <button onClick={() => deleteLink(linkId, projectId, onChange)}
+                className={styles.deleteButton}>
+            <CloseIcon />
+        </button>
     )
 }
 
