@@ -51,7 +51,7 @@ const approveProject = async (id: number) => {
         body: JSON.stringify({ name: "approved", value: true }),
     }
 
-    const reponse = await fetch(`/api/projects/${id}`, options)
+    await fetch(`/api/projects/${id}`, options)
 }
 
 type States = "idle" | "saving" | "saved" | "error"

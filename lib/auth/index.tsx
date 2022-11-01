@@ -1,11 +1,9 @@
 import { ArrowForwardIcon } from "@chakra-ui/icons"
 import { useState, FormEvent } from "react"
-import { useRouter } from "next/router"
 import styles from "./auth.module.css"
 
 const Auth = ({ onSuccess }: { onSuccess: () => void }) => {
     const [showError, setShowError] = useState(false)
-    const router = useRouter()
 
     const onChange = () => setShowError(false)
     const onFailure = () => setShowError(true)

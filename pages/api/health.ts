@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
 
-const handle = async (req: NextApiRequest, res: NextApiResponse) => {
+const handle = async (_req: NextApiRequest, res: NextApiResponse) => {
     res.status(200).json({ ok: true })
 }
 

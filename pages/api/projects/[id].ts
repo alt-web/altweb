@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { withIronSessionApiRoute } from "iron-session/next"
-import { Project, Link } from "@prisma/client"
+import { Project } from "@prisma/client"
 import { prisma } from "../../../lib/prisma"
 import { sessionOptions } from "../../../lib/session"
 import { getErrorMessage } from "../../../lib/error"

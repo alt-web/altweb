@@ -1,9 +1,8 @@
 import type { NextPage } from "next"
 import { useRouter } from "next/router"
 import Head from "next/head"
-import useSWR, { useSWRConfig } from "swr"
-import Link from "next/link"
-import { ReactNode, useState } from "react"
+import useSWR from "swr"
+import { ReactNode } from "react"
 import { ProjectsAPI } from "pages/api/projects/[id]"
 import Overview from "lib/project/overview"
 import Links from "lib/project/links"
@@ -29,10 +28,6 @@ const ProjectView: NextPage = () => {
     const { data, error } = useSWR<ProjectsAPI>(
         router.query.id ? `/api/projects/${router.query.id}` : null
     )
-    const { mutate } = useSWRConfig()
-    const update = () => {
-        if (router.query.id) mutate(`/api/projects/${router.query.id}`)
-    }
 
     if (!router.query.id || error) return <Layout>Error</Layout>
     if (!data) return <Layout>Loading</Layout>
