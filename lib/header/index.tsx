@@ -1,11 +1,13 @@
 import Link from "next/link"
+import Image from "next/image"
+import AWLogo from "../../public/android-chrome-512x512.png"
 import { useRouter } from "next/router"
 import styles from "./header.module.css"
 
 const Header = () => {
     return (
         <div className={styles.container}>
-            <MyLink href="/">ГЛАВНАЯ</MyLink>
+            <Logo />
             <Space />
             <MyLink href="/projects">ПРОЕКТЫ</MyLink>
             <MyLink href="/philosophy">ФИЛОСОФИЯ</MyLink>
@@ -13,6 +15,21 @@ const Header = () => {
             <Space />
             <Avatar />
         </div>
+    )
+}
+
+const Logo = () => {
+    return (
+        <Link href="/">
+            <Image
+                className={styles.Logo}
+                src={AWLogo}
+                placeholder="blur"
+                width={40}
+                height={40}
+                alt="Alt Web Logo"
+            />
+        </Link>
     )
 }
 
