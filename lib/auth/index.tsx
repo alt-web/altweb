@@ -3,12 +3,11 @@ import { useState, FormEvent } from "react"
 import { useRouter } from "next/router"
 import styles from "./auth.module.css"
 
-const Auth = () => {
+const Auth = ({ onSuccess }: { onSuccess: () => void }) => {
     const [showError, setShowError] = useState(false)
     const router = useRouter()
 
     const onChange = () => setShowError(false)
-    const onSuccess = () => router.push("/overview")
     const onFailure = () => setShowError(true)
 
     return (
