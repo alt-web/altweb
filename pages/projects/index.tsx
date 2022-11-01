@@ -3,10 +3,10 @@ import Link from "next/link"
 import Image, { StaticImageData } from "next/image"
 import Head from "next/head"
 import { ExternalLinkIcon } from "@chakra-ui/icons"
-import Paper from "../../lib/paper"
-import memento from "../../public/projects/memento.webp"
-import yy from "../../public/projects/yy.webp"
-import styles from "../../styles/projects/index.module.css"
+import Paper from "lib/paper"
+import memento from "public/projects/memento.webp"
+import yy from "public/projects/yy.webp"
+import styles from "styles/projects/index.module.css"
 
 const Projects: NextPage = () => {
     return (

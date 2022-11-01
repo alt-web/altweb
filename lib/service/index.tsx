@@ -1,4 +1,4 @@
-import Paper from "../paper"
+import Paper from "lib/paper"
 import styles from "./service.module.css"
 
 const Service = (props: {

@@ -1,7 +1,6 @@
 import Head from "next/head"
 import type { NextPage } from "next"
-import BG from "../lib/bg"
-import Service from "../lib/service"
+import Service from "lib/service"
 
 const Pricing: NextPage = () => {
     return (

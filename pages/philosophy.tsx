@@ -1,9 +1,9 @@
 import type { NextPage } from "next"
 import Head from "next/head"
-import Paper from "../lib/paper"
-import Pod from "../lib/drawings/pod"
-import Changelog from "../lib/drawings/changelog"
-import Analytics from "../lib/drawings/analytics"
+import Paper from "lib/paper"
+import Pod from "lib/drawings/pod"
+import Changelog from "lib/drawings/changelog"
+import Analytics from "lib/drawings/analytics"
 
 const Philosophy: NextPage = () => {
     return (

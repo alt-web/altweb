@@ -6,11 +6,11 @@ import { useRouter } from "next/router"
 import { GetServerSideProps } from "next"
 import { useState, ReactNode, FormEvent } from "react"
 import { withIronSessionSsr } from "iron-session/next"
-import Paper from "../../lib/paper"
-import Auth from "../../lib/auth"
-import { sessionOptions } from "../../lib/session"
-import { ProjectsAPI } from "../api/projects"
-import styles from "../../styles/overview/index.module.css"
+import Paper from "lib/paper"
+import Auth from "lib/auth"
+import { sessionOptions } from "lib/session"
+import { ProjectsAPI } from "pages/api/projects"
+import styles from "styles/overview/index.module.css"
 
 const getSession: GetServerSideProps = async context => {
     const isAuthorized = !!context.req.session.user

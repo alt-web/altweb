@@ -1,8 +1,8 @@
 import type { NextPage } from "next"
 import Head from "next/head"
-import Title from "../lib/title"
-import { NavButton } from "../lib/ui/button"
-import styles from "../styles/index.module.css"
+import Title from "lib/title"
+import { NavButton } from "lib/ui/button"
+import styles from "styles/index.module.css"
 
 const Home: NextPage = () => {
     return (
