@@ -1,4 +1,3 @@
-import { CheckCircleIcon } from "@chakra-ui/icons"
 import styles from "./analytics.module.css"
 
 const Analytics = () => {

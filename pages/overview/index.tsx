@@ -2,13 +2,36 @@ import { useSWRConfig } from "swr"
 import useSWRImmutable from "swr/immutable"
 import Head from "next/head"
 import Link from "next/link"
+import { useRouter } from "next/router"
+import { GetServerSideProps } from "next"
 import { useState, ReactNode, FormEvent } from "react"
-import Paper from "../../lib/paper"
-import { ProjectsAPI } from "../api/projects"
-import styles from "../../styles/overview/index.module.css"
+import { withIronSessionSsr } from "iron-session/next"
+import Paper from "lib/paper"
+import Auth from "lib/auth"
+import { sessionOptions } from "lib/session"
+import { ProjectsAPI } from "pages/api/projects"
+import styles from "styles/overview/index.module.css"
 
-const Overview = () => {
+const getSession: GetServerSideProps = async context => {
+    const isAuthorized = !!context.req.session.user
+    return {
+        props: {
+            isAuthorized,
+        },
+    }
+}
+
+export const getServerSideProps = withIronSessionSsr(getSession, sessionOptions)
+
+const LoginPage = () => {
+    const router = useRouter()
+    const reload = () => router.reload()
+    return <Auth onSuccess={reload} />
+}
+
+const Overview = (props: { isAuthorized: boolean }) => {
     const { data, error } = useSWRImmutable<ProjectsAPI, Error>("/api/projects")
+    if (!props.isAuthorized) return <LoginPage />
 
     if (error) return <Layout>Error</Layout>
     if (!data || data.projects === undefined) return <Layout>Loading</Layout>

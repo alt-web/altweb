@@ -11,6 +11,14 @@
     width: 100%;
 }
 
+.Logo {
+    border-radius: 6px;
+}
+
+.Logo:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
 .link {
     padding: 5px;
 }
@@ -54,6 +62,10 @@
     height: 34px;
     border-radius: 50%;
     background-color: #aaa;
+    color: #888;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .space {
