@@ -8,6 +8,7 @@ import type { AppProps } from "next/app"
 import Tracking from "../lib/tracking"
 import Background from "../lib/bg"
 import Header from "../lib/header"
+import Footer from "lib/footer"
 import "../styles/globals.css"
 
 function AltWeb({ Component, pageProps }: AppProps) {
@@ -20,9 +21,11 @@ function AltWeb({ Component, pageProps }: AppProps) {
             }}>
             <Tracking />
             <Favicons />
-            <Background />
-            <Header />
-            <Component {...pageProps} />
+            <Background>
+                <Header />
+                <Component {...pageProps} />
+            </Background>
+            <Footer />
         </SWRConfig>
     )
 }
