@@ -6,8 +6,9 @@
 }
 
 .container h1 {
-    font-size: 94px;
+    font-size: 96px;
     font-weight: 900;
+    margin-bottom: 8px;
 }
 
 .description {
