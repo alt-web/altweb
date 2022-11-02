@@ -3,12 +3,26 @@
     padding-bottom: 30px;
     padding-left: 60px;
     padding-right: 60px;
+    font-weight: 300;
+    width: 100%;
+    z-index: 10;
+}
+
+.container,
+.links {
     display: flex;
+    flex-direction: row;
     gap: 80px;
     flex-wrap: wrap;
     align-items: center;
-    font-weight: 300;
-    width: 100%;
+}
+
+.links {
+    overflow: hidden;
+}
+
+.LogoWrapper {
+    z-index: 15;
 }
 
 .Logo {
@@ -72,19 +86,51 @@
     flex-grow: 1;
 }
 
+.button {
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: white;
+    display: none;
+    z-index: 15;
+}
+
 @media screen and (max-width: 800px) {
-    .avatarContainer,
-    .space {
+    .avatarContainer {
         display: none;
     }
 
-    .container {
-        flex-direction: column;
+    .container,
+    .links {
         align-items: flex-start;
         gap: 30px;
     }
 
     .link {
         width: 100%;
+    }
+
+    .links {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        padding-left: 60px;
+        padding-right: 60px;
+        flex-direction: column;
+        background-color: #0048;
+        height: 0vh;
+        backdrop-filter: blur(15px);
+        transition: height 0.1s ease-in-out;
+        z-index: 10;
+    }
+
+    .links > div:first-of-type {
+        margin-top: 120px;
+    }
+
+    .button {
+        display: block;
     }
 }

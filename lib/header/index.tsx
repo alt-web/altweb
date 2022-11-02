@@ -1,18 +1,34 @@
 import Link from "next/link"
 import Image from "next/image"
-import { AtSignIcon } from "@chakra-ui/icons"
+import { AtSignIcon, HamburgerIcon, SmallCloseIcon } from "@chakra-ui/icons"
 import AWLogo from "../../public/android-chrome-512x512.png"
 import { useRouter } from "next/router"
+import { useState } from "react"
 import styles from "./header.module.css"
 
 const Header = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+    const linkStyle = isMenuOpen
+        ? {
+              height: "100vh",
+          }
+        : {}
+
     return (
         <div className={styles.container}>
             <Logo />
             <Space />
-            <MyLink href="/projects">ПРОЕКТЫ</MyLink>
-            <MyLink href="/philosophy">ФИЛОСОФИЯ</MyLink>
-            <MyLink href="/pricing">ЦЕНЫ</MyLink>
+            <button
+                className={styles.button}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                {isMenuOpen ? <SmallCloseIcon /> : <HamburgerIcon />}
+            </button>
+            <div className={styles.links} style={linkStyle}>
+                <MyLink href="/projects">ПРОЕКТЫ</MyLink>
+                <MyLink href="/philosophy">ФИЛОСОФИЯ</MyLink>
+                <MyLink href="/pricing">ЦЕНЫ</MyLink>
+            </div>
             <Avatar />
         </div>
     )
@@ -20,7 +36,7 @@ const Header = () => {
 
 const Logo = () => {
     return (
-        <Link href="/">
+        <Link href="/" className={styles.LogoWrapper}>
             <Image
                 className={styles.Logo}
                 src={AWLogo}
