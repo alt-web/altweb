@@ -4,13 +4,45 @@ import styles from "./auth.module.css"
 
 const Auth = ({ onSuccess }: { onSuccess: () => void }) => {
     const [showError, setShowError] = useState(false)
+    const [createAccount, setCreateAccount] = useState(true)
 
     const onChange = () => setShowError(false)
     const onFailure = () => setShowError(true)
 
     return (
         <div className={styles.container}>
-            <form onSubmit={e => handleSubmit(e, onSuccess, onFailure)}>
+            <form
+                onSubmit={e =>
+                    handleSubmit(e, onSuccess, onFailure, createAccount)
+                }>
+                {createAccount && (
+                    <>
+                        <h2>Создать аккаунт</h2>
+                        <div className={styles.hint}>
+                            Уже есть аккаунт?{" "}
+                            <span
+                                className={styles.link}
+                                onClick={() => setCreateAccount(false)}>
+                                Войти
+                            </span>
+                        </div>
+                    </>
+                )}
+
+                {!createAccount && (
+                    <>
+                        <h2>Войти в аккаунт</h2>
+                        <div className={styles.hint}>
+                            Нет аккаунта?{" "}
+                            <span
+                                className={styles.link}
+                                onClick={() => setCreateAccount(true)}>
+                                Создать
+                            </span>
+                        </div>
+                    </>
+                )}
+
                 <input
                     placeholder="Почта"
                     name="email"
@@ -44,7 +76,8 @@ interface AuthorizationForm extends HTMLFormElement {
 const handleSubmit = async (
     e: FormEvent,
     onSuccess: () => void,
-    onFailure: () => void
+    onFailure: () => void,
+    createAccount: boolean
 ) => {
     e.preventDefault()
     const target = e.target as AuthorizationForm
@@ -58,7 +91,10 @@ const handleSubmit = async (
             password: target.password.value,
         }),
     }
-    const response = await fetch("/api/auth", options)
+    const response = await fetch(
+        createAccount ? "/api/register" : "/api/login",
+        options
+    )
     if (response.status === 200) onSuccess()
     else onFailure()
 }

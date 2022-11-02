@@ -10,6 +10,16 @@
     margin-top: 3em;
 }
 
+.hint {
+    color: #ddd;
+    font-size: 14px;
+}
+
+.link {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .container input {
     height: 50px;
     width: 100%;
@@ -21,6 +31,10 @@
     font-size: 14px;
     background-color: rgba(255, 255, 255, 0.7);
     margin-bottom: 10px;
+}
+
+.container input:first-of-type {
+    margin-top: 2em;
 }
 
 .container button {
