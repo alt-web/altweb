@@ -3,13 +3,18 @@ import Image from "next/image"
 import { AtSignIcon, HamburgerIcon, SmallCloseIcon } from "@chakra-ui/icons"
 import AWLogo from "../../public/android-chrome-512x512.png"
 import { useRouter } from "next/router"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import styles from "./header.module.css"
 
 const Header = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
+    const router = useRouter()
 
-    const linkStyle = isMenuOpen
+    useEffect(() => {
+        setIsOpen(false)
+    }, [router.isReady, router.asPath])
+
+    const style = isOpen
         ? {
               height: "100vh",
           }
@@ -21,10 +26,10 @@ const Header = () => {
             <Space />
             <button
                 className={styles.button}
-                onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                {isMenuOpen ? <SmallCloseIcon /> : <HamburgerIcon />}
+                onClick={() => setIsOpen(!isOpen)}>
+                {isOpen ? <SmallCloseIcon /> : <HamburgerIcon />}
             </button>
-            <div className={styles.links} style={linkStyle}>
+            <div className={styles.links} style={style}>
                 <MyLink href="/projects">ПРОЕКТЫ</MyLink>
                 <MyLink href="/philosophy">ФИЛОСОФИЯ</MyLink>
                 <MyLink href="/pricing">ЦЕНЫ</MyLink>
