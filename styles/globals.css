@@ -1,16 +1,10 @@
-@font-face {
-    font-family: "JetBrains Mono";
-    src: url("/fonts/JetBrainsMono-Bold.woff2") format("woff2");
-    font-weight: bold;
-}
-
 html,
 body {
     width: 100%;
     min-height: 100vh;
     padding: 0;
     margin: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 400;
     color: white;
 }
@@ -21,6 +15,12 @@ body {
 a {
     color: inherit;
     text-decoration: none;
+}
+
+input,
+button,
+textarea {
+    font-family: inherit;
 }
 
 * {

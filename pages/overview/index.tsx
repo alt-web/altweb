@@ -12,12 +12,13 @@ import styles from "styles/overview/index.module.css"
 
 const getSession: GetServerSideProps = async context => {
     const isAuthorized = !!context.req.session.user
-    if (!isAuthorized) return {
-        redirect: {
-            destination: '/auth',
-            permanent: false,
-        },
-    }
+    if (!isAuthorized)
+        return {
+            redirect: {
+                destination: "/auth",
+                permanent: false,
+            },
+        }
     return { props: {} }
 }
 

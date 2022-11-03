@@ -7,12 +7,13 @@ import { sessionOptions } from "lib/session"
 
 const getSession: GetServerSideProps = async context => {
     const isAuthorized = !!context.req.session.user
-    if (isAuthorized) return {
-        redirect: {
-            destination: '/overview',
-            permanent: false,
+    if (isAuthorized)
+        return {
+            redirect: {
+                destination: "/overview",
+                permanent: false,
+            },
         }
-    }
     return { props: {} }
 }
 
