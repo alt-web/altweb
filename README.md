@@ -1,5 +1,7 @@
 # Alt Web
 
+![Screenshot](public/screenshot-1.webp)
+
 ## Development server
 
 ```bash
