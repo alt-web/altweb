@@ -26,12 +26,15 @@ const getProjects = async (
 ) => {
     try {
         if (!req.session.user) throw new Error("You are not authorized")
+        const where = req.session.user.isAdmin
+            ? {}
+            : {
+                  owner: {
+                      email: req.session.user.login,
+                  },
+              }
         const projects = await prisma.project.findMany({
-            where: {
-                owner: {
-                    email: req.session.user.login,
-                },
-            },
+            where,
         })
         if (projects === undefined)
             throw new Error("Can't get your list of projects")
