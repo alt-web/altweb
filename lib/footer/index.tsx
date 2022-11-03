@@ -1,4 +1,4 @@
-import { EmailIcon, InfoOutlineIcon } from "@chakra-ui/icons"
+import { FiMail, FiGithub } from "react-icons/fi"
 import styles from "./footer.module.css"
 
 const Footer = () => {
@@ -13,13 +13,13 @@ const Footer = () => {
 
 const Email = () => (
     <div>
-        <EmailIcon /> <a href="mailto:dev@altweb.tech">dev@altweb.tech</a>
+        <FiMail /> <a href="mailto:dev@altweb.tech">dev@altweb.tech</a>
     </div>
 )
 
 const Github = () => (
     <div>
-        <InfoOutlineIcon />{" "}
+        <FiGithub />{" "}
         <a href="https://github.com/alt-web" target="_blank" rel="noreferrer">
             Github
         </a>

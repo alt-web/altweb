@@ -1,5 +1,5 @@
-import { ArrowForwardIcon } from "@chakra-ui/icons"
 import { useState, FormEvent } from "react"
+import Button from "lib/ui/button"
 import styles from "./auth.module.css"
 
 const Auth = ({ onSuccess }: { onSuccess: () => void }) => {
@@ -60,9 +60,7 @@ const Auth = ({ onSuccess }: { onSuccess: () => void }) => {
                 {showError && (
                     <div className={styles.error}>Ошибка, проверьте данные</div>
                 )}
-                <button type="submit">
-                    Продолжить <ArrowForwardIcon />
-                </button>
+                <Button>Продолжить</Button>
             </form>
         </div>
     )

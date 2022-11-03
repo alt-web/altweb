@@ -6,6 +6,10 @@
     cursor: pointer;
     background-color: #1755b4;
     color: white;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    justify-content: center;
 }
 
 .button:hover {

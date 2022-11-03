@@ -23,5 +23,6 @@
 
 .container svg {
     float: right;
-    padding-top: 6px;
+    padding-top: 4px;
+    font-size: 22px
 }

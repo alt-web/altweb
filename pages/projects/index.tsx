@@ -1,7 +1,7 @@
 import type { NextPage } from "next"
 import Link from "next/link"
 import Image, { StaticImageData } from "next/image"
-import { ExternalLinkIcon, LinkIcon } from "@chakra-ui/icons"
+import { FiExternalLink, FiLink } from "react-icons/fi"
 import Meta from "lib/meta"
 import Paper from "lib/paper"
 import memento from "public/projects/memento.webp"
@@ -48,7 +48,7 @@ const ProjectName = (props: { name: string; href?: string }) => {
             <Link href={props.href} passHref>
                 <h3 className={styles.projectName}>
                     {props.name}
-                    <ExternalLinkIcon />
+                    <FiExternalLink />
                 </h3>
             </Link>
         )
@@ -66,7 +66,7 @@ const ProjectImage = (props: { src: StaticImageData }) => {
 const ProjectLink = (props: { children: string; href: string }) => {
     return (
         <p className={styles.link}>
-            <LinkIcon />{" "}
+            <FiLink />{" "}
             <a href={props.href} target="_blank" rel="noreferrer">
                 {props.children}
             </a>

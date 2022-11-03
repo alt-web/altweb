@@ -1,5 +1,5 @@
 import { useState, ChangeEvent } from "react"
-import { CheckIcon, SpinnerIcon, WarningIcon } from "@chakra-ui/icons"
+import { FiCheckCircle, FiLoader, FiAlertCircle } from "react-icons/fi"
 import styles from "./overview.module.css"
 
 const Overview = (props: {
@@ -95,15 +95,15 @@ const Property = (props: {
                 onChange={handleInputEvent}
                 placeholder={props.placeholder}
             />
-            {state === "saving" && <SpinnerIcon />}
+            {state === "saving" && <FiLoader />}
             {state === "saved" && (
                 <span className={styles.green}>
-                    <CheckIcon />
+                    <FiCheckCircle />
                 </span>
             )}
             {state === "error" && (
                 <span className={styles.red}>
-                    <WarningIcon />
+                    <FiAlertCircle />
                 </span>
             )}
         </div>

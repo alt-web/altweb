@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
 import useSWR, { useSWRConfig } from "swr"
 import { FormEvent } from "react"
-import { LinkIcon, CloseIcon, AddIcon } from "@chakra-ui/icons"
+import { FiLink, FiX, FiPlus } from "react-icons/fi"
 import Button from "../../ui/button"
 import { LinksApi } from "../../../pages/api/projects/[id]/links"
 import styles from "./links.module.css"
@@ -30,7 +30,7 @@ const Links = () => {
             <h4>Ссылки</h4>
             {data.links.map(link => (
                 <div key={link.id} className={styles.link}>
-                    <LinkIcon />
+                    <FiLink />
                     <a href={link.href} target="_blank" rel="noreferrer">
                         {link.name}
                     </a>
@@ -45,7 +45,7 @@ const Links = () => {
                 <input placeholder="Имя" name="linkName" required />
                 <input placeholder="Url" name="href" required />
                 <Button>
-                    <AddIcon /> Добавить ссылку
+                    <FiPlus /> Добавить ссылку
                 </Button>
             </form>
         </div>
@@ -65,7 +65,7 @@ function DeleteButton({
         <button
             onClick={() => deleteLink(linkId, projectId, onChange)}
             className={styles.deleteButton}>
-            <CloseIcon />
+            <FiX />
         </button>
     )
 }
