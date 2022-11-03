@@ -1,4 +1,4 @@
-import { FiMail, FiGithub } from "react-icons/fi"
+import { FiMail, FiSend, FiGithub } from "react-icons/fi"
 import styles from "./footer.module.css"
 
 const Footer = () => {
@@ -6,6 +6,7 @@ const Footer = () => {
         <div className={styles.content}>
             <div>ALT WEB</div>
             <Email />
+            <Telegram />
             <Github />
         </div>
     )
@@ -14,6 +15,15 @@ const Footer = () => {
 const Email = () => (
     <div>
         <FiMail /> <a href="mailto:dev@altweb.tech">dev@altweb.tech</a>
+    </div>
+)
+
+const Telegram = () => (
+    <div>
+        <FiSend />{" "}
+        <a href="https://t.me/altwebchat" target="_blank" rel="noreferrer">
+            Telegram
+        </a>
     </div>
 )
 
