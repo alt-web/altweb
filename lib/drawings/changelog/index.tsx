@@ -1,4 +1,4 @@
-import { CheckCircleIcon } from "@chakra-ui/icons"
+import { FiGitCommit } from "react-icons/fi"
 import styles from "./changelog.module.css"
 
 const Changelog = () => {
@@ -14,7 +14,7 @@ const Changelog = () => {
 
 const Commit = ({ children }: { children: string }) => (
     <div className={styles.commit}>
-        <CheckCircleIcon />
+        <FiGitCommit />
         {children}
     </div>
 )

@@ -25,6 +25,7 @@
     border-radius: 8px;
     outline: none;
     color: black;
+    font-family: inherit;
 }
 
 .list input {

@@ -1,13 +1,11 @@
-import Head from "next/head"
 import type { NextPage } from "next"
+import Meta from "lib/meta"
 import Service from "lib/service"
 
 const Pricing: NextPage = () => {
     return (
         <div>
-            <Head>
-                <title>Цены - Alt Web</title>
-            </Head>
+            <Meta title="Цены" />
             <Service
                 name="Разработка сайта"
                 description="Вы получите полностью готовый проект, с которым сможете делать всё, что душе угодно"

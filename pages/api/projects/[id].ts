@@ -29,26 +29,30 @@ const getProjects = async (
     try {
         if (req.query.id === undefined) throw new Error("Id is undefined")
         if (!req.session.user) throw new Error("You are not authorized")
-        const project = await prisma.project.findMany({
-            where: {
-                id: parseInt(req.query.id.toString()),
-                owner: {
-                    email: req.session.user.login,
-                },
-            },
+
+        const id = parseInt(req.query.id.toString())
+        const where = req.session.user.isAdmin
+            ? { id }
+            : {
+                  id: id,
+                  owner: {
+                      email: req.session.user.login,
+                  },
+              }
+
+        const project = await prisma.project.findFirst({
+            where,
             include: {
                 links: true,
             },
         })
-        if (!project || project.length !== 1)
-            throw new Error("Can't find this project")
+        if (!project) throw new Error("Can't find this project")
         res.status(200).json({
-            project: project[0],
+            project: project,
             isAdmin: req.session.user.isAdmin,
         })
     } catch (err) {
-        const msg =
-            err instanceof Error && err.message ? err.message : "Unknown error"
+        const msg = getErrorMessage(err)
         res.status(400).json({ msg })
     }
 }
@@ -63,12 +67,16 @@ const updateProject = async (
         if (!req.body.name) throw new Error("Please provide property name")
         if (!req.body.value) throw new Error("Please provide property value")
 
-        const where = {
-            id: parseInt(req.query.id.toString()),
-            owner: {
-                email: req.session.user.login,
-            },
-        }
+        const id = parseInt(req.query.id.toString())
+
+        const where = req.session.user.isAdmin
+            ? { id }
+            : {
+                  id,
+                  owner: {
+                      email: req.session.user.login,
+                  },
+              }
 
         if (req.body.name === "name") {
             const updatedProject = await prisma.project.updateMany({

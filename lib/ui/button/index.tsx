@@ -1,6 +1,6 @@
 import { ReactNode } from "react"
 import Link from "next/link"
-import { ArrowForwardIcon } from "@chakra-ui/icons"
+import { FiArrowRight } from "react-icons/fi"
 import styles from "./button.module.css"
 
 function Button({
@@ -27,7 +27,7 @@ export function NavButton({
     return (
         <Link href={href}>
             <Button>
-                {children} <ArrowForwardIcon />
+                {children} <FiArrowRight />
             </Button>
         </Link>
     )

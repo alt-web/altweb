@@ -1,4 +1,4 @@
-import { DragHandleIcon } from "@chakra-ui/icons"
+import { FiServer } from "react-icons/fi"
 import styles from "./pod.module.css"
 
 const Pod = () => {
@@ -15,7 +15,7 @@ const Pod = () => {
 const Container = ({ children }: { children: string }) => (
     <div className={styles.container}>
         {children}
-        <DragHandleIcon />
+        <FiServer />
     </div>
 )
 

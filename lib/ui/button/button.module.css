@@ -6,6 +6,13 @@
     cursor: pointer;
     background-color: #1755b4;
     color: white;
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 700;
 }
 
 .button:hover {

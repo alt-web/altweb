@@ -1,8 +1,8 @@
 import type { NextPage } from "next"
 import Link from "next/link"
 import Image, { StaticImageData } from "next/image"
-import Head from "next/head"
-import { ExternalLinkIcon } from "@chakra-ui/icons"
+import { FiExternalLink, FiLink } from "react-icons/fi"
+import Meta from "lib/meta"
 import Paper from "lib/paper"
 import memento from "public/projects/memento.webp"
 import yy from "public/projects/yy.webp"
@@ -11,14 +11,15 @@ import styles from "styles/projects/index.module.css"
 const Projects: NextPage = () => {
     return (
         <div>
-            <Head>
-                <title>Проекты - Alt Web</title>
-            </Head>
+            <Meta title="Проекты" />
 
             <Paper>
                 <ProjectName name="YY Studios" href="https://yy-studios.ru" />
                 <ProjectImage src={yy} />
-                Сайт агенства и платформа для художников
+                <p>Сайт агенства и платформа для художников.</p>
+                <ProjectLink href="https://github.com/alt-web/yy">
+                    Github
+                </ProjectLink>
             </Paper>
 
             <Paper>
@@ -28,6 +29,9 @@ const Projects: NextPage = () => {
                 />
                 <ProjectImage src={memento} />
                 Экспериментальная социальная сеть
+                <ProjectLink href="https://github.com/ordinary-dev/memento">
+                    Github
+                </ProjectLink>
             </Paper>
 
             <Paper>
@@ -44,7 +48,7 @@ const ProjectName = (props: { name: string; href?: string }) => {
             <Link href={props.href} passHref>
                 <h3 className={styles.projectName}>
                     {props.name}
-                    <ExternalLinkIcon />
+                    <FiExternalLink />
                 </h3>
             </Link>
         )
@@ -56,6 +60,17 @@ const ProjectImage = (props: { src: StaticImageData }) => {
         <div className={styles.projectImage}>
             <Image src={props.src} alt="Project" placeholder="blur" fill />
         </div>
+    )
+}
+
+const ProjectLink = (props: { children: string; href: string }) => {
+    return (
+        <p className={styles.link}>
+            <FiLink />{" "}
+            <a href={props.href} target="_blank" rel="noreferrer">
+                {props.children}
+            </a>
+        </p>
     )
 }
 

@@ -1,5 +1,5 @@
 import type { NextPage } from "next"
-import Head from "next/head"
+import Meta from "lib/meta"
 import Paper from "lib/paper"
 import Pod from "lib/drawings/pod"
 import Changelog from "lib/drawings/changelog"
@@ -8,9 +8,7 @@ import Analytics from "lib/drawings/analytics"
 const Philosophy: NextPage = () => {
     return (
         <div>
-            <Head>
-                <title>Философия - Alt Web</title>
-            </Head>
+            <Meta title="Философия" />
 
             <Paper>
                 &quot;Что же на сайте компании может делать страница про её

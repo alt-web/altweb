@@ -44,7 +44,9 @@
     margin-bottom: 8px;
     background-color: #fffa;
     border: none;
+    outline: none;
     border-radius: 6px;
+    font-family: inherit;
 }
 
 .links form button {
