@@ -1,11 +1,11 @@
 import { useSWRConfig } from "swr"
 import useSWRImmutable from "swr/immutable"
-import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { GetServerSideProps } from "next"
 import { useState, ReactNode, FormEvent } from "react"
 import { withIronSessionSsr } from "iron-session/next"
+import Meta from "lib/meta"
 import Paper from "lib/paper"
 import Auth from "lib/auth"
 import { sessionOptions } from "lib/session"
@@ -26,7 +26,12 @@ export const getServerSideProps = withIronSessionSsr(getSession, sessionOptions)
 const LoginPage = () => {
     const router = useRouter()
     const reload = () => router.reload()
-    return <Auth onSuccess={reload} />
+    return (
+        <div>
+            <Meta title="Авторизация" />
+            <Auth onSuccess={reload} />
+        </div>
+    )
 }
 
 const Overview = (props: { isAuthorized: boolean }) => {
@@ -57,9 +62,7 @@ const Overview = (props: { isAuthorized: boolean }) => {
 
 const Layout = ({ children }: { children: ReactNode }) => (
     <div className={styles.container}>
-        <Head>
-            <title>Ваши проекты - Alt Web</title>
-        </Head>
+        <Meta title="Ваши проекты" />
         {children}
     </div>
 )

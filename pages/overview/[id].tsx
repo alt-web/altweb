@@ -1,9 +1,9 @@
 import type { NextPage } from "next"
 import { useRouter } from "next/router"
-import Head from "next/head"
 import useSWR from "swr"
 import { ReactNode } from "react"
 import { ProjectsAPI } from "pages/api/projects/[id]"
+import Meta from "lib/meta"
 import Overview from "lib/project/overview"
 import Links from "lib/project/links"
 import styles from "styles/overview/id.module.css"
@@ -12,14 +12,17 @@ import Payments from "./[id]/payments"
 
 const P = () => {
     return (
-        <Navigation
-            tabs={["Информация", "Ссылки", "Платежи"]}
-            panels={[
-                <ProjectView key={0} />,
-                <Links key={1} />,
-                <Payments key={2} />,
-            ]}
-        />
+        <div>
+            <Meta title="Проект" />
+            <Navigation
+                tabs={["Информация", "Ссылки", "Платежи"]}
+                panels={[
+                    <ProjectView key={0} />,
+                    <Links key={1} />,
+                    <Payments key={2} />,
+                ]}
+            />
+        </div>
     )
 }
 
@@ -48,12 +51,7 @@ const ProjectView: NextPage = () => {
 }
 
 const Layout = ({ children }: { children: ReactNode }) => (
-    <div className={styles.container}>
-        <Head>
-            <title>Проект - Alt Web</title>
-        </Head>
-        {children}
-    </div>
+    <div className={styles.container}>{children}</div>
 )
 
 export default P

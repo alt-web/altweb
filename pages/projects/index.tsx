@@ -1,8 +1,8 @@
 import type { NextPage } from "next"
 import Link from "next/link"
 import Image, { StaticImageData } from "next/image"
-import Head from "next/head"
 import { ExternalLinkIcon, LinkIcon } from "@chakra-ui/icons"
+import Meta from "lib/meta"
 import Paper from "lib/paper"
 import memento from "public/projects/memento.webp"
 import yy from "public/projects/yy.webp"
@@ -11,9 +11,7 @@ import styles from "styles/projects/index.module.css"
 const Projects: NextPage = () => {
     return (
         <div>
-            <Head>
-                <title>Проекты - Alt Web</title>
-            </Head>
+            <Meta title="Проекты" />
 
             <Paper>
                 <ProjectName name="YY Studios" href="https://yy-studios.ru" />
