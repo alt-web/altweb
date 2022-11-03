@@ -9,7 +9,7 @@ const Home: NextPage = () => {
         <div className={styles.container}>
             <Meta />
             <Title />
-            <NavButton href="/overview">Открыть проект</NavButton>
+            <NavButton href="/auth">Открыть проект</NavButton>
         </div>
     )
 }
