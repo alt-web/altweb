@@ -1,23 +1,19 @@
 import type { NextPage } from "next"
 import Meta from "lib/meta"
-import Paper from "lib/paper"
 import Pod from "lib/drawings/pod"
 import Changelog from "lib/drawings/changelog"
 import Analytics from "lib/drawings/analytics"
+import styles from "styles/about.module.css"
 
 const Philosophy: NextPage = () => {
     return (
-        <div>
-            <Meta title="Философия" />
+        <div className={styles.container}>
+            <div className={styles.doc}>
+                <Meta title="О нас" />
 
-            <Paper>
-                &quot;Что же на сайте компании может делать страница про её
-                философию&quot;? Ответ довольно прост: у нас есть свой взгляд на
-                разработку.
-            </Paper>
+                <h2>Наш подход к разработке</h2>
 
-            <Paper>
-                <h2>Независимость</h2>
+                <h3>Независимость</h3>
                 <Pod />
                 <p>
                     Чем наши работы могут отличаться от других? Мы уважаем ваше
@@ -29,10 +25,8 @@ const Philosophy: NextPage = () => {
                     Даже если в далеком будущем наша компания перестанет
                     существовать, ваши проекты будут в целости и сохранности.
                 </p>
-            </Paper>
 
-            <Paper>
-                <h2>Постоянная поддержка</h2>
+                <h3>Постоянная поддержка</h3>
                 <Changelog />
                 <p>
                     Если вы решите остаться с нами и не будете передавать проект
@@ -45,10 +39,8 @@ const Philosophy: NextPage = () => {
                     высококачественные библиотеки, которые позволят сделать ваш
                     проект проще и надёжнее.
                 </p>
-            </Paper>
 
-            <Paper>
-                <h2>Продвижение</h2>
+                <h3>Продвижение</h3>
                 <Analytics />
                 <p>Мы не бросаем проекты на середине.</p>
                 <p>
@@ -62,7 +54,7 @@ const Philosophy: NextPage = () => {
                     вашем проекте. В нём мы публикуем самое интересное из нашего
                     опыта разработки.
                 </p>
-            </Paper>
+            </div>
         </div>
     )
 }

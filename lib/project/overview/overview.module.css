@@ -1,3 +1,9 @@
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 1em;
+}
+
 .container textarea {
     background-color: rgba(255, 255, 255, 0.7);
     color: black;
@@ -6,8 +12,9 @@
     border-radius: 10px;
     outline: none;
     max-width: 400px;
-    min-width: 400px;
+    width: 100%;
     font-family: inherit;
+    font-size: inherit;
 }
 
 .name {
@@ -24,6 +31,7 @@
 
 .property {
     position: relative;
+    width: 100%;
 }
 
 .property svg {

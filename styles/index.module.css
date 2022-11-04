@@ -4,5 +4,6 @@
     align-items: center;
     justify-content: center;
     height: 60vh;
+    min-height: 400px;
     gap: 4em;
 }

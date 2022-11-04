@@ -8,9 +8,12 @@
     z-index: -1;
     padding: 1.5em;
     font-weight: 200;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4em;
 }
 
-.content div {
+.column div {
     padding-bottom: 8px;
     display: flex;
     align-items: center;

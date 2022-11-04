@@ -1,13 +1,21 @@
-import { FiMail, FiSend, FiGithub } from "react-icons/fi"
+import Link from "next/link"
+import { FiMail, FiSend, FiGithub, FiFileText } from "react-icons/fi"
 import styles from "./footer.module.css"
 
 const Footer = () => {
     return (
         <div className={styles.content}>
-            <div>ALT WEB</div>
-            <Email />
-            <Telegram />
-            <Github />
+            <div className={styles.column}>
+                <div>ALT WEB</div>
+                <Email />
+                <Telegram />
+                <Github />
+            </div>
+
+            <div className={styles.column}>
+                <div>ДОКУМЕНТЫ</div>
+                <Offer />
+            </div>
         </div>
     )
 }
@@ -33,6 +41,12 @@ const Github = () => (
         <a href="https://github.com/alt-web" target="_blank" rel="noreferrer">
             Github
         </a>
+    </div>
+)
+
+const Offer = () => (
+    <div>
+        <FiFileText /> <Link href="/docs/offer">Оферта</Link>
     </div>
 )
 

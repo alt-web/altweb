@@ -3,8 +3,18 @@
     align-items: center;
 }
 
-.projectName svg {
+.projectName svg:first-of-type {
+    margin-right: 10px;
+}
+
+.projectName span {
+    padding-top: 2px;
+    font-weight: 700;
+}
+
+.projectName svg:last-of-type {
     margin-left: 10px;
+    color: #999;
 }
 
 .projectImage {
@@ -16,6 +26,7 @@
 
 .projectImage img {
     object-fit: cover;
+    border-radius: 4px;
 }
 
 .link {

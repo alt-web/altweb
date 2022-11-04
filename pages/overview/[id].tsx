@@ -7,24 +7,7 @@ import Meta from "lib/meta"
 import Overview from "lib/project/overview"
 import Links from "lib/project/links"
 import styles from "styles/overview/id.module.css"
-import { Navigation } from "lib/ui/navigation"
 import Payments from "./[id]/payments"
-
-const P = () => {
-    return (
-        <div>
-            <Meta title="Проект" />
-            <Navigation
-                tabs={["Информация", "Ссылки", "Платежи"]}
-                panels={[
-                    <ProjectView key={0} />,
-                    <Links key={1} />,
-                    <Payments key={2} />,
-                ]}
-            />
-        </div>
-    )
-}
 
 const ProjectView: NextPage = () => {
     const router = useRouter()
@@ -41,17 +24,21 @@ const ProjectView: NextPage = () => {
             <Overview
                 name={data.project.name}
                 description={data.project.description}
-                createdAt={data.project.createdAt}
                 approved={data.project.approved}
                 id={data.project.id}
                 isAdmin={data.isAdmin}
             />
+            <Links />
+            <Payments />
         </Layout>
     )
 }
 
 const Layout = ({ children }: { children: ReactNode }) => (
-    <div className={styles.container}>{children}</div>
+    <div className={styles.container}>
+        <Meta title="Проект" />
+        {children}
+    </div>
 )
 
-export default P
+export default ProjectView
