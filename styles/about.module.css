@@ -1,0 +1,17 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.doc {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 4em;
+}
+
+.doc h3 {
+    margin-top: 3em;
+}

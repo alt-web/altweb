@@ -31,7 +31,7 @@ const Header = () => {
             </button>
             <div className={styles.links} style={style}>
                 <MyLink href="/projects">ПРОЕКТЫ</MyLink>
-                <MyLink href="/philosophy">ФИЛОСОФИЯ</MyLink>
+                <MyLink href="/about">О НАС</MyLink>
                 <MyLink href="/pricing">ЦЕНЫ</MyLink>
             </div>
             <Avatar />

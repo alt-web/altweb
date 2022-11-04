@@ -46,10 +46,7 @@ const Github = () => (
 
 const Offer = () => (
     <div>
-        <FiFileText />{" "}
-        <Link href="/docs/offer">
-            Оферта
-        </Link>
+        <FiFileText /> <Link href="/docs/offer">Оферта</Link>
     </div>
 )
 
