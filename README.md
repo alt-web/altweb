@@ -1,6 +1,9 @@
 # Alt Web
 
 ![Screenshot](public/screenshot-1.webp)
+Our home page, which we plan to make universal in the future.
+
+![Uptime](https://status.altweb.tech/api/v1/endpoints/_alt-web/uptimes/7d/badge.svg)
 
 ## Development server
 
