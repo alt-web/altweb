@@ -1,6 +1,15 @@
 import type { NextPage } from "next"
 import Image, { StaticImageData } from "next/image"
-import { FiExternalLink, FiLink } from "react-icons/fi"
+import { ReactNode } from "react"
+import {
+    FiExternalLink,
+    FiLink,
+    FiImage,
+    FiCamera,
+    FiBarChart2,
+    FiActivity,
+    FiList,
+} from "react-icons/fi"
 import Meta from "lib/meta"
 import Paper from "lib/paper"
 import styles from "styles/projects/index.module.css"
@@ -18,7 +27,11 @@ const Projects: NextPage = () => {
             <Meta title="Проекты" />
 
             <Paper>
-                <ProjectName name="YY Studios" href="https://yy-studios.ru" />
+                <ProjectName
+                    icon={<FiImage />}
+                    name="YY Studios"
+                    href="https://yy-studios.ru"
+                />
                 <ProjectImage src={yy} />
                 <p>Сайт агенства и платформа для художников.</p>
                 <ProjectLink href="https://github.com/alt-web/yy">
@@ -28,12 +41,15 @@ const Projects: NextPage = () => {
 
             <Paper>
                 <ProjectName
+                    icon={<FiCamera />}
                     name="Memento"
                     href="https://memento.comfycamp.space"
                 />
                 <ProjectImage src={memento} />
-                Экспериментальная социальная сеть. Каждый пользователь может
-                загрузить лишь 24 фотографии.
+                <p>
+                    Экспериментальная социальная сеть. Каждый пользователь может
+                    загрузить лишь 24 фотографии.
+                </p>
                 <ProjectLink href="https://github.com/ordinary-dev/memento">
                     Github
                 </ProjectLink>
@@ -41,43 +57,55 @@ const Projects: NextPage = () => {
 
             <Paper>
                 <ProjectName
+                    icon={<FiBarChart2 />}
                     name="Alt Web Stats"
                     href="https://stats.altweb.tech"
                 />
                 <ProjectImage src={stats} />
-                Наш сервис для сбора статистики о посетителях сайтов. В основе
-                находится Shynet - альтернатива Google Analytics с открытым
-                исходным кодом.
+                <p>
+                    Наш сервис для сбора статистики о посетителях сайтов. В
+                    основе находится Shynet - альтернатива Google Analytics с
+                    открытым исходным кодом.
+                </p>
             </Paper>
 
             <Paper>
                 <ProjectName
+                    icon={<FiActivity />}
                     name="Alt Web Status"
                     href="https://status.altweb.tech"
                 />
                 <ProjectImage src={status} />
-                Круглосуточный мониторинг всех сервисов при помощи Gatus.
+                <p>Круглосуточный мониторинг всех сервисов.</p>
             </Paper>
 
             <Paper>
                 <ProjectName
+                    icon={<FiList />}
                     name="Alt Web Tasks"
                     href="https://tasks.altweb.tech"
                 />
                 <ProjectImage src={tasks} />
-                Платформа для управления задачами. Вы можете легко создать
-                список необходимых изменений и отслеживать прогресс.
+                <p>
+                    Платформа для управления задачами. Вы можете легко создать
+                    список необходимых изменений и отслеживать прогресс.
+                </p>
             </Paper>
         </div>
     )
 }
 
-const ProjectName = (props: { name: string; href?: string }) => {
+const ProjectName = (props: {
+    icon: ReactNode
+    name: string
+    href?: string
+}) => {
     if (props.href)
         return (
             <a href={props.href} target="_blank" rel="noreferrer">
                 <h3 className={styles.projectName}>
-                    {props.name}
+                    {props.icon}
+                    <span>{props.name}</span>
                     <FiExternalLink />
                 </h3>
             </a>
