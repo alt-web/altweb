@@ -6,7 +6,6 @@ const Overview = (props: {
     id: number
     name: string
     description: string | null
-    createdAt: Date
     approved: boolean
     isAdmin?: boolean
 }) => {
@@ -27,9 +26,6 @@ const Overview = (props: {
                 placeholder="Описание проекта. Например: интернет-магазин компании Alt Web"
                 projectId={props.id}
             />
-
-            <h4>Дата создания</h4>
-            <div>{new Date(props.createdAt).toLocaleString()}</div>
 
             <h4>Статус проекта?</h4>
             <div>{props.approved ? "Одобрен" : "Не одобрен"}</div>

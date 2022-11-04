@@ -2,6 +2,7 @@
     max-width: 400px;
     width: 100%;
     margin-bottom: 2em;
+    padding: 1em;
 }
 
 .links h4 {
@@ -47,6 +48,7 @@
     outline: none;
     border-radius: 6px;
     font-family: inherit;
+    font-size: inherit;
 }
 
 .links form button {

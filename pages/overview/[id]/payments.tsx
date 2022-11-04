@@ -27,10 +27,16 @@ const Payments = () => {
 
     return (
         <div className={styles.container}>
+            <h4>Платежи</h4>
             {data.payments.map(payment => (
                 <Paper key={payment.id}>
-                    <div>{payment.serviceName.toUpperCase()}</div>
-                    <div>{payment.price}₽</div>
+                    <div className={styles.row}>
+                        <div>{payment.serviceName.toUpperCase()}</div>
+                        <div>{payment.price}₽</div>
+                    </div>
+                    <div>
+                        Статус: {payment.isPaid ? "оплачен" : "не оплачен"}
+                    </div>
                     {data.isAdmin && (
                         <button
                             onClick={() => deletePayment(payment.id, reload)}>
@@ -40,6 +46,10 @@ const Payments = () => {
                 </Paper>
             ))}
             {data.payments.length === 0 && <div>Нет информации о платежах</div>}
+            <div className={styles.note}>
+                На обработку платежа может уйти некоторое время. Не волнуйтесь,
+                если статус не изменился сразу после оплаты.
+            </div>
             {data.isAdmin && (
                 <form onSubmit={e => submitForm(e, id, reload)}>
                     <input
