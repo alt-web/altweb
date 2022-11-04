@@ -1,22 +1,20 @@
+import { ReactNode } from "react"
 import Paper from "lib/paper"
 import styles from "./service.module.css"
 
 const Service = (props: {
+    icon: ReactNode
     name: string
     description: string
-    price?: number
+    price: number
     perMonth?: boolean
-    discount?: number
 }) => {
     return (
         <Paper>
             <div className={styles.row}>
+                {props.icon}
                 <h2>{props.name.toUpperCase()}</h2>
-                <Value
-                    price={props.price}
-                    perMonth={props.perMonth}
-                    discount={props.discount}
-                />
+                <Value price={props.price} perMonth={props.perMonth} />
             </div>
             <div>{props.description}</div>
         </Paper>
@@ -24,23 +22,15 @@ const Service = (props: {
 }
 
 const Value = (props: {
-    price?: number
+    price: number
     perMonth?: boolean
     discount?: number
 }) => {
-    if (props.price !== undefined) {
-        let price = props.price.toLocaleString("ru") + " ₽"
-        if (props.perMonth) price += " / мес"
-        if (props.price > 0) return <h2>{price}</h2>
-        return <h2 className={styles.greatOffer}>{price}</h2>
-    }
+    let price = props.price.toLocaleString("ru") + " ₽"
+    if (props.perMonth) price += " / мес"
 
-    if (props.discount !== undefined) {
-        let discount = props.discount + " %"
-        return <h2 className={styles.greatOffer}>{discount}</h2>
-    }
-
-    return <></>
+    if (props.price > 0) return <h2>от {price}</h2>
+    return <h2 className={styles.greatOffer}>от {price}</h2>
 }
 
 export default Service
