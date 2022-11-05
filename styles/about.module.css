@@ -14,4 +14,7 @@
 
 .doc h3 {
     margin-top: 3em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
