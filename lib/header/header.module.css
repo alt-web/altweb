@@ -33,18 +33,13 @@
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-.link {
-    padding: 5px;
-}
-
 .underline,
 .permanentUnderline {
     width: 0%;
-    background-color: #3f3fc2;
-    border-radius: 4px;
-    height: 6px;
-    margin-top: -6px;
-    transition: width 0.15s ease-in-out;
+    background-color: #fff8;
+    height: 1px;
+    margin-top: 3px;
+    transition: width 0.1s ease-in-out;
 }
 
 .linkContainer:hover .underline,
