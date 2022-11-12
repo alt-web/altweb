@@ -2,7 +2,6 @@ import "@fontsource/montserrat/300.css"
 import "@fontsource/montserrat/400.css"
 import "@fontsource/montserrat/700.css"
 import "@fontsource/montserrat/900.css"
-import { SWRConfig } from "swr"
 import Head from "next/head"
 import type { AppProps } from "next/app"
 import Tracking from "../lib/tracking"
@@ -13,12 +12,7 @@ import "../styles/globals.css"
 
 function AltWeb({ Component, pageProps }: AppProps) {
     return (
-        <SWRConfig
-            value={{
-                refreshInterval: 10000000,
-                fetcher: (resource, init) =>
-                    fetch(resource, init).then(res => res.json()),
-            }}>
+        <div>
             <Tracking />
             <Favicons />
             <Background>
@@ -26,7 +20,7 @@ function AltWeb({ Component, pageProps }: AppProps) {
                 <Component {...pageProps} />
             </Background>
             <Footer />
-        </SWRConfig>
+        </div>
     )
 }
 

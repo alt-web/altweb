@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { FiMenu, FiX, FiAtSign } from "react-icons/fi"
+import { FiMenu, FiX } from "react-icons/fi"
 import AWLogo from "../../public/android-chrome-512x512.png"
 import { useRouter } from "next/router"
 import { useState, useEffect } from "react"
@@ -34,7 +34,6 @@ const Header = () => {
                 <MyLink href="/about">О НАС</MyLink>
                 <MyLink href="/pricing">ЦЕНЫ</MyLink>
             </div>
-            <Avatar />
         </div>
     )
 }
@@ -68,29 +67,6 @@ const MyLink = ({ href, children }: { href: string; children: string }) => {
                         ? styles.permanentUnderline
                         : styles.underline
                 }></div>
-        </div>
-    )
-}
-
-const Avatar = () => {
-    const router = useRouter()
-
-    const style = router.asPath.startsWith("/overview")
-        ? {
-              width: "40px",
-              height: "40px",
-          }
-        : {}
-
-    return (
-        <div className={styles.avatarContainer}>
-            <Link href="/overview" passHref>
-                <div style={style} className={styles.avatarStroke}>
-                    <div className={styles.avatar}>
-                        <FiAtSign />
-                    </div>
-                </div>
-            </Link>
         </div>
     )
 }
