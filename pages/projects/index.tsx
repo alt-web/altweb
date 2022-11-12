@@ -8,7 +8,6 @@ import {
     FiCamera,
     FiBarChart2,
     FiActivity,
-    FiList,
 } from "react-icons/fi"
 import Meta from "lib/meta"
 import Paper from "lib/paper"
@@ -19,7 +18,6 @@ import memento from "public/projects/memento.webp"
 import yy from "public/projects/yy.webp"
 import stats from "public/projects/stats.webp"
 import status from "public/projects/status.webp"
-import tasks from "public/projects/tasks.webp"
 
 const Projects: NextPage = () => {
     return (
@@ -77,19 +75,6 @@ const Projects: NextPage = () => {
                 />
                 <ProjectImage src={status} />
                 <p>Круглосуточный мониторинг всех сервисов.</p>
-            </Paper>
-
-            <Paper>
-                <ProjectName
-                    icon={<FiList />}
-                    name="Alt Web Tasks"
-                    href="https://tasks.altweb.tech"
-                />
-                <ProjectImage src={tasks} />
-                <p>
-                    Платформа для управления задачами. Вы можете легко создать
-                    список необходимых изменений и отслеживать прогресс.
-                </p>
             </Paper>
         </div>
     )
