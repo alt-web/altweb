@@ -1,5 +1,6 @@
 {
     "name": "alt-web",
+    "prettier": "@alt-web/prettier-config",
     "private": true,
     "scripts": {
         "dev": "next dev",
@@ -19,6 +20,7 @@
         "sharp": "^0.31.2"
     },
     "devDependencies": {
+        "@alt-web/prettier-config": "^0.0.2",
         "@types/node": "18.11.9",
         "@types/react": "18.0.25",
         "@types/react-dom": "18.0.8",
