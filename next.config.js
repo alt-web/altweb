@@ -2,10 +2,9 @@
 const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
-    i18n: {
-        locales: ['ru'],
-        defaultLocale: 'ru',
-    },
+    images: {
+        unoptimized: true
+    }
 }
 
 module.exports = nextConfig
