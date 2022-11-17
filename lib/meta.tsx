@@ -1,7 +1,7 @@
 import Head from "next/head"
 
 const Meta = (props: { title?: string }) => {
-    const url = "https://altweb.tech"
+    const url = "https://www.altweb.tech"
 
     let title = "Alt Web"
     if (props.title) title = props.title + " - " + title
@@ -9,7 +9,7 @@ const Meta = (props: { title?: string }) => {
     const description =
         "Мы поможем вам оказаться в интернете. Сделаем сайт, настроим сервер и почту, а также поднимем сайт в поисковой выдаче."
 
-    const image = "https://altweb.tech/preview.png"
+    const image = `${url}/preview.png`
 
     return (
         <Head>
@@ -24,7 +24,7 @@ const Meta = (props: { title?: string }) => {
             <meta property="og:image" content={image} />
 
             <meta property="twitter:card" content="summary_large_image" />
-            <meta property="twitter:domain" content="altweb.tech" />
+            <meta property="twitter:domain" content="www.altweb.tech" />
             <meta property="twitter:url" content={url} />
             <meta property="twitter:title" content={title} />
             <meta property="twitter:description" content={description} />
