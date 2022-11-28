@@ -15,3 +15,9 @@
     font-weight: 300;
     font-size: 16px;
 }
+
+.container h1::selection,
+.description::selection {
+    background-color: white;
+    color: #361183;
+}
