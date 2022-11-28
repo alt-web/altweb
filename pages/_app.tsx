@@ -4,7 +4,7 @@ import "@fontsource/montserrat/700.css"
 import "@fontsource/montserrat/900.css"
 import Head from "next/head"
 import type { AppProps } from "next/app"
-import Tracking from "../lib/tracking"
+import Shynet from "next-shynet"
 import Background from "../lib/bg"
 import Header from "../lib/header"
 import Footer from "lib/footer"
@@ -13,7 +13,7 @@ import "../styles/globals.css"
 function AltWeb({ Component, pageProps }: AppProps) {
     return (
         <div>
-            <Tracking />
+            <Shynet scriptSrc="https://stats.altweb.tech/ingress/d7eb3ce3-b69e-4fc2-af6d-4b036e14e3d3/script.js" />
             <Favicons />
             <Background>
                 <Header />
