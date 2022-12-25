@@ -17,7 +17,13 @@ const Footer = () => {
 
 const Author = () => (
     <div className={styles.author}>
-        <Image src="/author.webp" width={32} height={32} alt="The author of altweb.tech - Ivan"/> Ivan R.
+        <Image
+            src="/author.webp"
+            width={32}
+            height={32}
+            alt="The author of altweb.tech - Ivan"
+        />{" "}
+        Ivan R.
     </div>
 )
 

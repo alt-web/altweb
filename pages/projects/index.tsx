@@ -7,12 +7,14 @@ import {
     FiCamera,
     FiBarChart2,
     FiActivity,
+    FiShoppingCart
 } from "react-icons/fi"
 import Meta from "lib/meta"
 import Paper from "lib/paper"
 import styles from "styles/projects/index.module.css"
 
 // Images
+import yenisei from "public/projects/yenisei.webp"
 import memento from "public/projects/memento.webp"
 import yy from "public/projects/yy.webp"
 import stats from "public/projects/stats.webp"
@@ -22,6 +24,13 @@ const Projects: NextPage = () => {
     return (
         <div>
             <Meta title="Проекты" />
+
+            <Paper>
+                <ProjectName icon={<FiShoppingCart />} name="Енисей" />
+                <ProjectImage src={yenisei} />
+                <p>Интернет-магазин строительных материалов и сайт для объявлений.</p>
+                <ProjectLink href="https://avsdorstroi.ru">Сайт</ProjectLink>
+            </Paper>
 
             <Paper>
                 <ProjectName icon={<FiImage />} name="YY Studios" />
