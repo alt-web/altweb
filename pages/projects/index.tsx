@@ -2,7 +2,6 @@ import type { NextPage } from "next"
 import Image, { StaticImageData } from "next/image"
 import { ReactNode } from "react"
 import {
-    FiExternalLink,
     FiLink,
     FiImage,
     FiCamera,
@@ -25,11 +24,7 @@ const Projects: NextPage = () => {
             <Meta title="Проекты" />
 
             <Paper>
-                <ProjectName
-                    icon={<FiImage />}
-                    name="YY Studios"
-                    href="https://yy-studios.ru"
-                />
+                <ProjectName icon={<FiImage />} name="YY Studios" />
                 <ProjectImage src={yy} />
                 <p>Сайт агенства и платформа для художников.</p>
                 <ProjectLink href="https://github.com/alt-web/yy">
@@ -38,11 +33,7 @@ const Projects: NextPage = () => {
             </Paper>
 
             <Paper>
-                <ProjectName
-                    icon={<FiCamera />}
-                    name="Memento"
-                    href="https://memento.comfycamp.space"
-                />
+                <ProjectName icon={<FiCamera />} name="Memento" />
                 <ProjectImage src={memento} />
                 <p>
                     Экспериментальная социальная сеть. Каждый пользователь может
@@ -54,11 +45,7 @@ const Projects: NextPage = () => {
             </Paper>
 
             <Paper>
-                <ProjectName
-                    icon={<FiBarChart2 />}
-                    name="Alt Web Stats"
-                    href="https://stats.altweb.tech"
-                />
+                <ProjectName icon={<FiBarChart2 />} name="Alt Web Stats" />
                 <ProjectImage src={stats} />
                 <p>
                     Наш сервис для сбора статистики о посетителях сайтов. В
@@ -68,11 +55,7 @@ const Projects: NextPage = () => {
             </Paper>
 
             <Paper>
-                <ProjectName
-                    icon={<FiActivity />}
-                    name="Alt Web Status"
-                    href="https://status.altweb.tech"
-                />
+                <ProjectName icon={<FiActivity />} name="Alt Web Status" />
                 <ProjectImage src={status} />
                 <p>Круглосуточный мониторинг всех сервисов.</p>
             </Paper>
@@ -85,17 +68,12 @@ const ProjectName = (props: {
     name: string
     href?: string
 }) => {
-    if (props.href)
-        return (
-            <a href={props.href} target="_blank" rel="noreferrer">
-                <h3 className={styles.projectName}>
-                    {props.icon}
-                    <span>{props.name}</span>
-                    <FiExternalLink />
-                </h3>
-            </a>
-        )
-    return <h3>{props.name}</h3>
+    return (
+        <h3 className={styles.projectName}>
+            {props.icon}
+            <span>{props.name}</span>
+        </h3>
+    )
 }
 
 const ProjectImage = (props: { src: StaticImageData }) => {
