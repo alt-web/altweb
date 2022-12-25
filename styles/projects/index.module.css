@@ -3,18 +3,13 @@
     align-items: center;
 }
 
-.projectName svg:first-of-type {
+.projectName svg {
     margin-right: 10px;
 }
 
 .projectName span {
     padding-top: 2px;
     font-weight: 700;
-}
-
-.projectName svg:last-of-type {
-    margin-left: 10px;
-    color: #999;
 }
 
 .projectImage {

@@ -2,18 +2,19 @@ import type { NextPage } from "next"
 import Image, { StaticImageData } from "next/image"
 import { ReactNode } from "react"
 import {
-    FiExternalLink,
     FiLink,
     FiImage,
     FiCamera,
     FiBarChart2,
     FiActivity,
+    FiShoppingCart
 } from "react-icons/fi"
 import Meta from "lib/meta"
 import Paper from "lib/paper"
 import styles from "styles/projects/index.module.css"
 
 // Images
+import yenisei from "public/projects/yenisei.webp"
 import memento from "public/projects/memento.webp"
 import yy from "public/projects/yy.webp"
 import stats from "public/projects/stats.webp"
@@ -25,11 +26,14 @@ const Projects: NextPage = () => {
             <Meta title="Проекты" />
 
             <Paper>
-                <ProjectName
-                    icon={<FiImage />}
-                    name="YY Studios"
-                    href="https://yy-studios.ru"
-                />
+                <ProjectName icon={<FiShoppingCart />} name="Енисей" />
+                <ProjectImage src={yenisei} />
+                <p>Интернет-магазин строительных материалов и сайт для объявлений.</p>
+                <ProjectLink href="https://avsdorstroi.ru">Сайт</ProjectLink>
+            </Paper>
+
+            <Paper>
+                <ProjectName icon={<FiImage />} name="YY Studios" />
                 <ProjectImage src={yy} />
                 <p>Сайт агенства и платформа для художников.</p>
                 <ProjectLink href="https://github.com/alt-web/yy">
@@ -38,11 +42,7 @@ const Projects: NextPage = () => {
             </Paper>
 
             <Paper>
-                <ProjectName
-                    icon={<FiCamera />}
-                    name="Memento"
-                    href="https://memento.comfycamp.space"
-                />
+                <ProjectName icon={<FiCamera />} name="Memento" />
                 <ProjectImage src={memento} />
                 <p>
                     Экспериментальная социальная сеть. Каждый пользователь может
@@ -54,11 +54,7 @@ const Projects: NextPage = () => {
             </Paper>
 
             <Paper>
-                <ProjectName
-                    icon={<FiBarChart2 />}
-                    name="Alt Web Stats"
-                    href="https://stats.altweb.tech"
-                />
+                <ProjectName icon={<FiBarChart2 />} name="Alt Web Stats" />
                 <ProjectImage src={stats} />
                 <p>
                     Наш сервис для сбора статистики о посетителях сайтов. В
@@ -68,11 +64,7 @@ const Projects: NextPage = () => {
             </Paper>
 
             <Paper>
-                <ProjectName
-                    icon={<FiActivity />}
-                    name="Alt Web Status"
-                    href="https://status.altweb.tech"
-                />
+                <ProjectName icon={<FiActivity />} name="Alt Web Status" />
                 <ProjectImage src={status} />
                 <p>Круглосуточный мониторинг всех сервисов.</p>
             </Paper>
@@ -85,17 +77,12 @@ const ProjectName = (props: {
     name: string
     href?: string
 }) => {
-    if (props.href)
-        return (
-            <a href={props.href} target="_blank" rel="noreferrer">
-                <h3 className={styles.projectName}>
-                    {props.icon}
-                    <span>{props.name}</span>
-                    <FiExternalLink />
-                </h3>
-            </a>
-        )
-    return <h3>{props.name}</h3>
+    return (
+        <h3 className={styles.projectName}>
+            {props.icon}
+            <span>{props.name}</span>
+        </h3>
+    )
 }
 
 const ProjectImage = (props: { src: StaticImageData }) => {
