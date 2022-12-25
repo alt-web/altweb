@@ -1,24 +1,25 @@
-import Link from "next/link"
-import { FiMail, FiSend, FiGithub, FiFileText } from "react-icons/fi"
+import Image from "next/image"
+import { FiMail, FiSend, FiGithub } from "react-icons/fi"
 import styles from "./footer.module.css"
 
 const Footer = () => {
     return (
         <div className={styles.content}>
             <div className={styles.column}>
-                <div>ALT WEB</div>
+                <Author />
                 <Email />
                 <Telegram />
                 <Github />
             </div>
-
-            <div className={styles.column}>
-                <div>ДОКУМЕНТЫ</div>
-                <Offer />
-            </div>
         </div>
     )
 }
+
+const Author = () => (
+    <div className={styles.author}>
+        <Image src="/author.webp" width={32} height={32} alt="The author of altweb.tech - Ivan"/> Ivan R.
+    </div>
+)
 
 const Email = () => (
     <div>
@@ -41,12 +42,6 @@ const Github = () => (
         <a href="https://github.com/alt-web" target="_blank" rel="noreferrer">
             Github
         </a>
-    </div>
-)
-
-const Offer = () => (
-    <div>
-        <FiFileText /> <Link href="/docs/offer">Оферта</Link>
     </div>
 )
 
